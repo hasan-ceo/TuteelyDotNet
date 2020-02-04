@@ -1,0 +1,284 @@
+﻿@model Nyika.Domain.Entities.MF.Member
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/MF/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Edit", "Members", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.MemberID)
+    @Html.HiddenFor(model => model.GroupsID)
+    @Html.HiddenFor(model => model.ImageUrl)
+
+    <div class="card text-white bg-dark p-md-0 mx-0 my-0" style="min-height:540px">
+        <div class="card-header bg-dark">
+            <div class="row">
+                <div class="col-md-4">
+                    <h4>Update Member</h4>
+                </div>
+                <div class="col-md-8 text-right">
+                    <div class="btn-group btn-group-justified">
+                        <input type="submit" value="Save" class="btn btn-secondary mx-md-1" />
+                        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="card-body p-md-3 b-0 m-md-0">
+            <div class="row p-md-0 m-md-0">
+                <div class="col-md-3">
+
+                    <div class="form-group p-md-0 m-md-0">
+                        @Html.LabelFor(model => model.MemberNo, htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                        <div class="col-md-12 p-md-0 m-md-0">
+                            @Html.EditorFor(model => model.MemberNo, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.MemberNo, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group p-md-0 m-md-0">
+                        @Html.LabelFor(model => model.MemberName, htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                        <div class="col-md-12 p-md-0 m-md-0">
+                            @if (User.IsInRole("Super Admin") == true)
+                            {
+                                @Html.EditorFor(model => model.MemberName, new { htmlAttributes = new { @class = "form-control" } })
+                            }
+                            else
+                            {
+                                @Html.EditorFor(model => model.MemberName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            }
+
+                            @Html.ValidationMessageFor(model => model.MemberName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group p-md-0 m-md-0">
+                        @Html.LabelFor(model => model.NationalID, htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                        <div class="col-md-12 p-md-0 m-md-0">
+                            @if (User.IsInRole("Super Admin") == true)
+                            {
+                                @Html.EditorFor(model => model.NationalID, new { htmlAttributes = new { @class = "form-control" } })
+                            }
+                            else
+                            {
+                                @Html.EditorFor(model => model.NationalID, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            }
+                            @Html.ValidationMessageFor(model => model.NationalID, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group p-md-0 m-md-0">
+                        @Html.LabelFor(model => model.DoB, htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                        <div class="col-md-12 p-md-0 m-md-0">
+                            @if (User.IsInRole("Super Admin") == true)
+                            {
+                                @Html.EditorFor(model => model.DoB, new { htmlAttributes = new { @class = "form-control" } })
+                            }
+                            else
+                            {
+                                @Html.EditorFor(model => model.DoB, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            }
+
+                            @Html.ValidationMessageFor(model => model.DoB, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group p-md-0 m-md-0">
+                        @Html.LabelFor(model => model.FatherName, htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                        <div class="col-md-12 p-md-0 m-md-0">
+                            @if (User.IsInRole("Super Admin") == true)
+                            {
+                                @Html.EditorFor(model => model.FatherName, new { htmlAttributes = new { @class = "form-control" } })
+                            }
+                            else
+                            {
+                                @Html.EditorFor(model => model.FatherName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            }
+                            @Html.ValidationMessageFor(model => model.FatherName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group p-md-0 m-md-0">
+                        @Html.LabelFor(model => model.MotherName, htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                        <div class="col-md-12 p-md-0 m-md-0">
+                            @if (User.IsInRole("Super Admin") == true)
+                            {
+                                @Html.EditorFor(model => model.MotherName, new { htmlAttributes = new { @class = "form-control" } })
+                            }
+                            else
+                            {
+                                @Html.EditorFor(model => model.MotherName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            }
+
+                            @Html.ValidationMessageFor(model => model.MotherName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group p-md-0 m-md-0">
+                        @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                        <div class="col-md-12 p-md-0 m-md-0">
+                            @if (User.IsInRole("Super Admin") == true)
+                            {
+                                @Html.DropDownList("Gender", new SelectList(new[] { "Female", "Male" }), htmlAttributes: new { @class = "form-control" })
+                            }
+                            else
+                            {
+                                @Html.HiddenFor(model => model.Gender)
+                                @Html.Label(Model.Gender, htmlAttributes: new { @class = "form-control", @readonly = "readonly" })
+                               
+                            }
+
+                            @* @Html.EditorFor(model => model.Gender, new { htmlAttributes = new { @class = "form-control" } })*@
+                            @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-3">
+
+                    <div class="form-group p-md-0 m-md-0">
+                        @Html.LabelFor(model => model.MaritalStatus, htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                        <div class="col-md-12 p-md-0 m-md-0">
+                            @Html.DropDownList("MaritalStatus", new SelectList(new[] { "Not Willing to Mention", "Single", "Married", "Divorced", "Single Mother", "Living Common Law ( Different Gender)", "Separated", "Civil Partner(Same Gender)" }), htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.MaritalStatus, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group p-md-0 m-md-0">
+                        @Html.LabelFor(model => model.PassportNo, htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                        <div class="col-md-12 p-md-0 m-md-0">
+                            @Html.EditorFor(model => model.PassportNo, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.PassportNo, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group p-md-0 m-md-0">
+                        @Html.LabelFor(model => model.DrivingLicenceNo, htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                        <div class="col-md-12 p-md-0 m-md-0">
+                            @Html.EditorFor(model => model.DrivingLicenceNo, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.DrivingLicenceNo, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group p-md-0 m-md-0">
+                        @Html.LabelFor(model => model.Occupation, htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                        <div class="col-md-12 p-md-0 m-md-0">
+                            @Html.DropDownList("Occupation", new SelectList(new[] { "Farmer", "Carpenter", "Blacksmith", "Govt. Employee", "Bangker", "Hawker", "School Teacher", "New Occupation", "Others" }), htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.Occupation, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group p-md-0 m-md-0">
+                        @Html.LabelFor(model => model.NomineeName, htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                        <div class="col-md-12 p-md-0 m-md-0">
+                            @Html.EditorFor(model => model.NomineeName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.NomineeName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group p-md-0 m-md-0">
+                        @Html.LabelFor(model => model.NomineeRelationship, htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                        <div class="col-md-12 p-md-0 m-md-0">
+
+                            @Html.DropDownList("NomineeRelationship", new SelectList(new[] { "Father", "Mother Brother", "Sister", "Spouse", "Son", "Daughter", "Father-in-Law", "Mother-in-Law", "Uncle", "Aunt", "Professional", "Academic", "Partner" }), htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.NomineeRelationship, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    <div class="form-group p-md-0 m-md-0">
+                        @Html.LabelFor(model => model.GurdianName, htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                        <div class="col-md-12 p-md-0 m-md-0">
+                            @Html.EditorFor(model => model.GurdianName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.GurdianName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-3">
+
+
+
+
+
+                    <div class="form-group p-md-0 m-md-0">
+                        @Html.LabelFor(model => model.GurdianNationalID, htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                        <div class="col-md-12 p-md-0 m-md-0">
+                            @Html.EditorFor(model => model.GurdianNationalID, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.GurdianNationalID, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group p-md-0 m-md-0">
+                        @Html.LabelFor(model => model.GurdianRelationship, htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                        <div class="col-md-12 p-md-0 m-md-0">
+                            @Html.DropDownList("GurdianRelationship", new SelectList(new[] { "Father", "Mother Brother", "Sister", "Spouse", "Son", "Daughter", "Father-in-Law", "Mother-in-Law", "Uncle", "Aunt", "Professional", "Academic", "Partner" }), htmlAttributes: new { @class = "form-control" })
+
+                            @Html.ValidationMessageFor(model => model.GurdianRelationship, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group p-md-0 m-md-0">
+                        @Html.LabelFor(model => model.ContactNumber, htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                        <div class="col-md-12 p-md-0 m-md-0">
+                            @Html.EditorFor(model => model.ContactNumber, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ContactNumber, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group p-md-0 m-md-0">
+                        @Html.LabelFor(model => model.PresentAddress, htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                        <div class="col-md-12 p-md-0 m-md-0">
+                            @Html.EditorFor(model => model.PresentAddress, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.PresentAddress, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group p-md-0 m-md-0">
+                        @Html.LabelFor(model => model.PermanentAddress, htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                        <div class="col-md-12 p-md-0 m-md-0">
+                            @Html.EditorFor(model => model.PermanentAddress, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.PermanentAddress, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+                <div class="col-md-3">
+
+                    <div class="form-group p-md-0 m-md-0">
+                        <img id="previewImage" name="previewImage" src="@Url.Content(Model.ImageUrl)?@DateTime.Now.ToFileTime()" alt="Logo" class="img-fluid" />
+                        <div class="col-md-12 p-md-0 m-md-0">
+                            <input type="file" class="form-control" name="ImageUpload" id="ImageUpload" onchange="ShowImagePreview(this,document.getElementById('previewImage'))" />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>@ViewBag.Msg</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

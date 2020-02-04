@@ -1,0 +1,104 @@
+﻿@model IEnumerable<Nyika.Domain.Entities.HR.EmployeeAllDed>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/HRnPayroll/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card text-white bg-dark p-md-0 mx-0 my-0" style="min-height:540px">
+    <div class="card-header bg-dark">
+        <div class="row">
+            <div class="col-md-7">
+                <h4>Employee Allowance / Deduction List</h4>
+            </div>
+            <div class="col-md-5 justify-content-end">
+                <div class="form-inline">
+                    @using (Html.BeginForm("Index", "EmployeeAllDeds", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="input-group text-center">
+                            <input type="text" class="form-control" name="txtSearch" id="txtSearch" placeholder="PIN">
+                            <div class="input-group-btn">
+                                <button class="btn btn-default" type="submit">
+                                    <strong>Find</strong>
+                                </button>
+                            </div>
+                        </div>
+
+                    }
+                    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-secondary mx-md-2" })
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+    <div class="card-body p-md-3 b-0 m-md-0 text-dark">
+        <table class="table table-responsive-md table-sm table-secondary table-hover table-striped">
+            <thead class="thead-dark">
+                <tr>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.AllDed.AllDedName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Employee.EmployeeName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EffectiveDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Amount)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.WorkDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Particulars)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AllDed.AllDedName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Employee.EmployeeName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EffectiveDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Amount)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.WorkDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Particulars)
+                    </td>
+
+
+                    <td class="text-right">
+                        <div class="btn-group text-white m-md-0 p-md-0">
+                            @if (item.Employee.EmployeeStatus == 0)
+                            {
+                                <a class="btn btn-secondary" href="@Url.Action("Edit", "EmployeeAllDeds", new { id = item.EmployeeAllDedID })" data-toggle="tooltip" data-placement="top" title="Edit"><strong>i</strong></a>
+                                <a class="btn btn-danger" href="@Url.Action("Delete", "EmployeeAllDeds", new { id = item.EmployeeAllDedID })" data-toggle="tooltip" data-placement="top" title="Delete"><strong>X</strong></a>
+                            }
+                        </div>
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>

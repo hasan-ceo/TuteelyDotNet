@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="@Url.Content("~/Images/icon.png?"+@DateTime.Now.ToFileTime())" sizes="any" type="image/svg+xml">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nyika - HR + Payroll + Accounts</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body style="padding-top: 78px" class="bg-dark">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="@Url.Content("~/")">
+            <img src="~/Images/logo.png" alt="Nyika logo" />
+
+        </a>
+
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto "></ul>
+            <ul class="nav navbar-nav navbar-right">
+                @*<li> <a class="btn btn-outline-secondary mx-md-1 my-md-0" href="~/dashboard/Index">Dashboard</a></li>*@
+                <li><a class="btn btn-outline-secondary mx-md-1 my-md-0 " href="~/BasicSetup/DashboardS">Basic Setup</a></li>
+                <li><a class="btn btn-outline-secondary mx-md-1 my-md-0" href="~/HRnPayroll/DashboardH">HR &amp Payroll</a></li>
+                <li><a class="btn btn-outline-secondary mx-md-1 my-md-0" href="~/Accounts/DashboardA">Accounts</a></li>
+                <li><a class="btn btn-outline-secondary mx-md-1 my-md-0" href="~/MF/DashboardM">Microfinance</a></li>
+                <li><a class="btn btn-outline-secondary mx-md-1 my-md-0" href="~/Invoices/DashboardI">Invoices</a></li>
+            </ul>
+            @Html.Partial("_LoginPartial")
+
+        </div>
+    </nav>
+
+
+    <div class="container-fluid bg-light p-md-1">
+        <div class="row p-md-0 m-md-0">
+            @*left sidebar*@
+            <div class="col-md-2 p-md-0 m-md-0">
+                <div class="card text-white bg-dark" style="min-height:540px">
+                    <div class="card-header">
+                        <h4>Basic Setup</h4>
+                    </div>
+                    <div class="card-body p-md-1">
+                        @Html.ActionLink("Team Members", "Index", "TeamMembers", new { Area = "BasicSetup" }, htmlAttributes: new { @class = "btn btn-secondary d-block p-md-0 mx-md-0 my-md-2" })
+                        @Html.ActionLink("Company", "Edit", "Companies", new { Area = "BasicSetup" }, htmlAttributes: new { @class = "btn btn-secondary d-block p-md-0 mx-md-0 my-md-2" })
+
+                        @Html.ActionLink("Department", "Index", "Departments", new { Area = "BasicSetup" }, htmlAttributes: new { @class = "btn btn-secondary d-block p-md-0 mx-md-0 my-md-2" })
+                        @Html.ActionLink("Section", "Index", "Sections", new { Area = "BasicSetup" }, htmlAttributes: new { @class = "btn btn-secondary d-block p-md-0 mx-md-0 my-md-2" })
+                        @Html.ActionLink("Designation", "Index", "Designations", new { Area = "BasicSetup" }, htmlAttributes: new { @class = "btn btn-secondary d-block p-md-0 mx-md-0 my-md-2" })
+                        @Html.ActionLink("Shift", "Index", "Shifts", new { Area = "BasicSetup" }, htmlAttributes: new { @class = "btn btn-secondary d-block p-md-0 mx-md-0 my-md-2" })
+                        @Html.ActionLink("Holiday", "Index", "Holidays", new { Area = "BasicSetup" }, htmlAttributes: new { @class = "btn btn-secondary d-block p-md-0 mx-md-0 my-md-2" })
+                        @Html.ActionLink("Leave", "Index", "Leaves", new { Area = "BasicSetup" }, htmlAttributes: new { @class = "btn btn-secondary d-block p-md-0 mx-md-0 my-md-2" })
+                        @Html.ActionLink("Allowance / Deduction", "Index", "AllDeds", new { Area = "BasicSetup" }, htmlAttributes: new { @class = "btn btn-secondary d-block p-md-0 mx-md-0 my-md-2" })
+                        @Html.ActionLink("Resign Reason", "Index", "ResignReasons", new { Area = "BasicSetup" }, htmlAttributes: new { @class = "btn btn-secondary d-block p-md-0 mx-md-0 my-md-2" })
+                        @Html.ActionLink("Employment Type", "Index", "EmploymentTypes", new { Area = "BasicSetup" }, htmlAttributes: new { @class = "btn btn-secondary d-block p-md-0 mx-md-0 my-md-2" })
+                        @Html.ActionLink("Education", "Index", "Educations", new { Area = "BasicSetup" }, htmlAttributes: new { @class = "btn btn-secondary d-block p-md-0 mx-md-0 my-md-2" })
+                        @Html.ActionLink("Page", "Index", "ShopPages", new { Area = "BasicSetup" }, htmlAttributes: new { @class = "btn btn-secondary d-block p-md-0 mx-md-0 my-md-2" })
+
+                    </div>
+                </div>
+               
+               
+
+            </div>
+
+            @*Middle*@
+            <div class="col-md-10 pl-md-1 p-md-0 m-md-0">
+                <div class="container-fluid bg-light p-md-0 m-md-0" style="min-height:540px">
+                   
+                            @RenderBody()
+                       
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row bg-dark text-white text-center">
+            <div class="col-md-12">
+                <footer class="p-md-3">
+                    <h6><strong>Developed by <a href="http://www.azmainventures.com" style="color:#ff6038">Azmain Ventures</a></strong></h6>
+                </footer>
+
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <script type="text/javascript">
+        $('#sandbox-container input').datepicker({
+            format: "dd/mm/yyyy"
+        });
+        </script>
+</body>
+</html>

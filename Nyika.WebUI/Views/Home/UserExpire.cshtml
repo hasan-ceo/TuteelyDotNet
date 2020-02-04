@@ -1,0 +1,122 @@
+﻿@model Nyika.WebUI.Models.UserExpireVM
+
+@{
+    ViewBag.Title = "User Expire";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="offset-md-2 col-md-8">
+            <div class="card border-0 py-md-4">
+
+                <div class="card-body text-center">
+                    <h1 class="text-danger">
+                        Your subscription has expired
+                    </h1>
+                    <h5 class="text-dark">
+                        To keep using Nyika service without interruption, choose an option below to renew subscription
+                    </h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header bg-secondary">
+                    <h1 class="card-title"><strong class="text-white">Small</strong></h1>
+                </div>
+                <div class="card-body h-100">
+                    <div class="d-md-inline-block">
+                        <h1 class="display-3 p-md-0 m-md-0"><strong class="text-warning">$60</strong></h1>
+                    </div>
+                    <div class="d-md-inline-block">
+                        <p class="card-text my-md-2">/ Month</p>
+                    </div>
+                    <p class="card-text my-md-2">Good for Start-up</p>
+                </div>
+                <div class="card-footer text-center">
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="custom" value="@Model.email">
+                        <input type="hidden" name="hosted_button_id" value="6XPGFK3VUXELL">
+                        <input type="image" src="https://www.paypal.com/en_US/GB/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online!">
+                        <img alt="" border="0" src="https://www.paypal.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+                    </form>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">HR, Payroll &amp; Accounts only</li>
+                    <li class="list-group-item">Shared Windows Cloud Server</li>
+                    <li class="list-group-item">Instance company setup</li>
+                    <li class="list-group-item">Support ticket</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header bg-success">
+                    <h1 class="card-title"><strong class="text-white">Medium</strong></h1>
+                </div>
+                <div class="card-body h-100">
+                    <div class="d-md-inline-block">
+                        <h1 class="display-3 p-md-0 m-md-0"><strong class="text-warning">$50</strong></h1>
+                    </div>
+                    <div class="d-md-inline-block">
+                        <p class="card-text my-md-2">/ Month</p>
+                    </div>
+                    <p class="card-text my-md-2">when billed annually</p>
+
+                </div>
+                <div class="card-footer text-center">
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="custom" value="@Model.email">
+                        <input type="hidden" name="hosted_button_id" value="758LF7YVT9QNW">
+                        <input type="image" src="https://www.paypal.com/en_US/GB/i/btn/btn_subscribeCC_LG.gif" border="0" name="submit" alt="PayPal – The safer, easier way to pay online!">
+                        <img alt="" border="0" src="https://www.paypal.com/en_GB/i/scr/pixel.gif" width="1" height="1">
+                    </form>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">HR, Payroll &amp; Accounts only</li>
+                    <li class="list-group-item">Dedicated Windows Cloud Server</li>
+                    <li class="list-group-item">Setup : 1 working days</li>
+                    <li class="list-group-item">Support by remote desktop client</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header bg-secondary">
+                    <h1 class="card-title"><strong class="text-white">Large</strong></h1>
+                </div>
+                <div class="card-body h-100">
+                    <h1 class="display-4 p-md-0 m-md-0"><strong class="text-warning">Contact us</strong></h1>
+                    <p class="card-text my-md-2">Customizable solutions with individualized support to help admins manage at scale</p>
+                </div>
+                <div class="card-footer text-center">
+                    <a class="btn btn-outline-dark  btn-lg px-md-5" href="/Contact" id="registerLink">Contact us</a>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">HR, Payroll &amp; Accounts Only</li>
+                    <li class="list-group-item">On-premises Server</li>
+                    <li class="list-group-item">Setup : 3 working days</li>
+                    <li class="list-group-item">Support by remote desktop client</li>
+                </ul>
+            </div>
+        </div>
+        
+
+        
+
+        
+    </div>
+   
+   
+
+
+
+</div>

@@ -1,0 +1,75 @@
+﻿@model Nyika.WebUI.Models.ItemListVM
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_LayoutShop.cshtml";
+}
+
+<div class="card text-center border-0 p-0 m-0">
+    <img src="@Url.Content(Model.HeaderUrl)?@DateTime.Now.ToFileTime())" alt="@Model.CategorySubName" class="card-img-top" />
+    <div class="card-body p-0 m-0">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="~/"><img src="~/images/svg/home.svg" alt="home" style="width:30px"></a></li>
+                <li class="breadcrumb-item"><a href="~/Item/@Model.CategoryUrl" style="text-decoration:none">@Model.CategoryName</a></li>
+                <li class="breadcrumb-item active" aria-current="page">@Model.CategorySubName</li>
+            </ol>
+        </nav>
+    </div>
+
+</div>
+
+
+<div class="row justify-content-center">
+    @if (Model.itemVM != null)
+    {
+        foreach (var item in Model.itemVM)
+        {
+            <div class="col-md-3 mb-3">
+                <div class="card text-center align-items-stretch h-100">
+                    <a class="btn btn-link" href="@Url.Content(item.UrlLink)">
+                        <img class="img-fluid" src="@Url.Content(item.Thumbnail)?@DateTime.Now.ToFileTime())" alt="@item.ItemName" style="height:250px;">
+                    </a>                    
+                    <div class="card-body">
+                        <h5>@Nyika.WebUI.LanguageResources.Global.ItemNo @item.ItemNo</h5>
+                        <h4 class="card-title">@item.ItemName</h4>
+                        @if (string.IsNullOrEmpty(item.Size) == false)
+                        {
+                            <h4>@Html.Raw(item.Size)</h4>
+
+                        }
+                        <p class="card-text d-inline">
+                            @if (item.OldPrice != 0)
+                            {
+                                <div class="d-inline p-0"><strike style="color:red">৳ @item.OldPrice</strike></div>
+                                <div class="d-inline p-0"><strong>/</strong></div>
+                            }
+                            <div class="d-inline p-0" style="font-size:x-large">৳ @item.NewPrice</div>
+                        </p>
+
+                    </div>
+                    <div class="card-footer justify-content-between bg-white border-0">
+                        <div class="btn-group" role="group">
+                            @using (Html.BeginForm("AddToBag", "ShopBag", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                            {
+                                @Html.Hidden("ItemID", item.ItemID)
+                                @Html.Hidden("returnUrl", Url.Content("~/Item/" + item.CategorySubUrl))
+                                <button class="btn btn-danger">
+                                    @Nyika.WebUI.LanguageResources.Global.AddtoBag
+                                </button>
+                            }
+
+                            <a href="@Url.Content(item.UrlLink)" class="btn btn-outline-warning">@Nyika.WebUI.LanguageResources.Global.ViewDetails</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        }
+    }
+
+</div>
+
+
+
+
+

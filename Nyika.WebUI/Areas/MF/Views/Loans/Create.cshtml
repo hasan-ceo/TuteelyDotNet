@@ -1,0 +1,125 @@
+﻿@model Nyika.WebUI.Areas.MF.Models.LoanVM
+
+<script>
+    // WRITE THE VALIDATION SCRIPT IN THE HEAD TAG.
+    function isNumber(evt) {
+        var iKeyCode = (evt.which) ? evt.which : evt.keyCode
+        if (iKeyCode != 46 && iKeyCode > 31 && (iKeyCode < 48 || iKeyCode > 57))
+            return false;
+
+        return true;
+    }
+</script>
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/MF/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Create", "Loans", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="card text-white bg-dark p-md-0 mx-0 my-0" style="min-height:540px">
+        <div class="card-header bg-dark">
+            <div class="row">
+                <div class="col-md-4">
+                    <h4>Create Loan</h4>
+                </div>
+                <div class="col-md-8 text-right">
+                    <div class="btn-group btn-group-justified">
+                        <input type="submit" value="Save" class="btn btn-secondary mx-md-1" />
+                        @Html.ActionLink("Back to List", "SelectMember", null, new { @class = "btn btn-secondary" })
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+        <div class="card-body p-md-3 b-0 m-md-0">
+
+
+            <div class="row p-md-0 m-md-0">
+                <div class="col-md-4">
+                    <div class="form-group p-md-0 m-md-0">
+                        @Html.LabelFor(model => model.ProjectName, htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                        <div class="col-md-12 p-md-0 m-md-0">
+                            @Html.EditorFor(model => model.ProjectName, new { htmlAttributes = new { @class = "form-control", @readonly="readonly" } })
+                            @Html.ValidationMessageFor(model => model.ProjectName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group p-md-0 m-md-0">
+                        @Html.LabelFor(model => model.GroupsName, htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                        <div class="col-md-12 p-md-0 m-md-0">
+                            @Html.EditorFor(model => model.GroupsName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.GroupsName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group p-md-0 m-md-0">
+                        @Html.LabelFor(model => model.MemberNo, htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                        <div class="col-md-12 p-md-0 m-md-0">
+                            @Html.EditorFor(model => model.MemberNo, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.MemberNo, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group p-md-0 m-md-0">
+                        @Html.LabelFor(model => model.MemberName, htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                        <div class="col-md-12 p-md-0 m-md-0">
+                            @Html.EditorFor(model => model.MemberName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.MemberName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    
+
+                </div>
+
+                <div class="col-md-4">
+                    @Html.HiddenFor(model => model.MemberID)
+
+                    <div class="form-group p-md-0 m-md-0">
+                        @Html.LabelFor(model => model.ProductID, "Product", htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                        <div class="col-md-12 p-md-0 m-md-0">
+                            @Html.DropDownList("ProductID", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ProductID, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group p-md-0 m-md-0">
+                        @Html.LabelFor(model => model.SchemeID, "Scheme", htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                        <div class="col-md-12 p-md-0 m-md-0">
+                            @Html.DropDownList("SchemeID", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.SchemeID, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group p-md-0 m-md-0">
+                        @Html.LabelFor(model => model.DisbursedAmount, "Disbursed Amount", htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                        <div class="col-md-12 p-md-0 m-md-0">
+                            @*<input type="text" name="DisbursedAmount" class="form-control" onkeypress="javascript:return isNumber(event)" />*@
+                            @Html.EditorFor(model => model.DisbursedAmount, new { htmlAttributes = new { @class = "form-control", @onkeypress = "javascript:return isNumber(event)" } })
+                            @Html.ValidationMessageFor(model => model.DisbursedAmount, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>@ViewBag.Msg</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,57 @@
+﻿@model Nyika.Domain.Entities.Setup.ShopPage
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/BasicSetup/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.ShopPageID)
+    <div class="card text-white bg-dark p-md-0 mx-0 my-0" style="min-height:540px">
+        <div class="card-header bg-dark">
+            <div class="row">
+                <div class="col-5">
+                    <h4>Are you sure you want to delete this?</h4>
+                </div>
+                <div class="col-7 text-right">
+                    <div class="btn-group btn-group-justified">
+                        <input type="submit" value="Delete" class="btn btn-danger mx-md-1" />
+                        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="card-body p-md-3 b-0 m-md-0">
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <dl class="dl-horizontal">
+                        <dt>
+                            <strong>
+                                @Html.DisplayNameFor(model => model.Slug) :
+                            </strong>
+                            @Html.DisplayFor(model => model.Slug)
+                        </dt>
+                        <dt>
+                            <strong>
+                                @Html.DisplayNameFor(model => model.Description) :
+                            </strong>
+                            @Html.DisplayFor(model => model.Description)
+                        </dt>
+                        <dt>
+                            <strong>
+                                @Html.DisplayNameFor(model => model.DescriptionLocal) :
+                            </strong>
+                            @Html.DisplayFor(model => model.DescriptionLocal)
+                        </dt>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+}

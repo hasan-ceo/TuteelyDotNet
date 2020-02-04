@@ -1,0 +1,166 @@
+﻿@model Nyika.Domain.Entities.MF.Loan
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/MF/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Create", "Loans", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="card text-white bg-dark p-md-0 mx-0 my-0" style="min-height:540px">
+        <div class="card-header bg-dark">
+            <div class="row">
+                <div class="col-md-4">
+                    <h4>Create Loan</h4>
+                </div>
+                <div class="col-md-8 text-right">
+                    <div class="btn-group btn-group-justified">
+                        <input type="submit" value="Save" class="btn btn-secondary mx-md-1" />
+                        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+        <div class="card-body p-md-3 b-0 m-md-0">
+
+
+            <div class="row p-md-0 m-md-0">
+                <div class="col-md-12">
+                    <div class="form-horizontal p-md-0 m-md-0">
+
+                        <div class="form-group p-md-0 m-md-0">
+                            @Html.Label("Project", htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                            <div class="col-md-12 p-md-0 m-md-0">
+                                <select id="ProjectID" class="form-control" name="ProjectID"></select>
+                                @*@Html.DropDownList("ProjectID", null, htmlAttributes: new { @class = "form-control" })*@
+                                @* @Html.ValidationMessageFor(model => model.GroupsID, "", new { @class = "text-danger" })*@
+                            </div>
+                        </div>
+
+                        <div class="form-group p-md-0 m-md-0">
+                            @Html.LabelFor(model => model.GroupsID, "Groups", htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                            <div class="col-md-12 p-md-0 m-md-0">
+                                <select id="GroupsID" class="form-control" name="GroupsID"></select>
+                                @*@Html.DropDownList("GroupsID", null, htmlAttributes: new { @class = "form-control" })*@
+                                @Html.ValidationMessageFor(model => model.GroupsID, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group p-md-0 m-md-0">
+                            @Html.LabelFor(model => model.MemberID, "Member", htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                            <div class="col-md-12 p-md-0 m-md-0">
+                                <select id="MemberID" class="form-control" name="MemberID"></select>
+                                @*@Html.DropDownList("MemberID", null, htmlAttributes: new { @class = "form-control" })*@
+                                @Html.ValidationMessageFor(model => model.GroupsID, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group p-md-0 m-md-0">
+                            @Html.LabelFor(model => model.ProductID, "Product", htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                            <div class="col-md-12 p-md-0 m-md-0">
+                                <select id="ProductID" class="form-control" name="ProductID"></select>
+                                @*@Html.DropDownList("ProductID", null, htmlAttributes: new { @class = "form-control" })*@
+                                @Html.ValidationMessageFor(model => model.ProductID, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group p-md-0 m-md-0">
+                            @Html.LabelFor(model => model.SchemeID, "Scheme", htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                            <div class="col-md-12 p-md-0 m-md-0">
+                                @Html.DropDownList("SchemeID", null, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.SchemeID, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group p-md-0 m-md-0">
+                            @Html.LabelFor(model => model.DisbursedAmount, "Disbursed Amount", htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                            <div class="col-md-12 p-md-0 m-md-0">
+                                @Html.EditorFor(model => model.DisbursedAmount, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.DisbursedAmount, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+
+                </div>
+
+
+                <div class="col-md-3">
+
+                </div>
+
+                <div class="col-md-3">
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>@ViewBag.Msg</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+@section ProjectGroup
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // Get a list of categories and a list of products of the first category.
+            $.getJSON('@Url.Action(actionName: "GetProject",controllerName:"Projects",routeValues: new { Area = "MF" })', null, function (data) { $.each(data, function () { $('#ProjectID').append('<option value=' + this.ProjectID + '>' + this.ProjectName + '</option>');});
+                $.getJSON('@Url.Action(actionName: "GetGroups", controllerName: "Groups", routeValues: new { Area = "MF" })', { ProjectID: $('#ProjectID').val() }, function (data) { $.each(data, function () { $('#GroupsID').append('<option value=' + this.GroupsID + '>' + this.GroupsName + '</option>'); });
+                    $.getJSON('@Url.Action(actionName: "GetMember", controllerName: "Members", routeValues: new { Area = "MF" })', { GroupsID: $('#GroupsID').val() }, function (data) { $.each(data, function () { $('#MemberID').append('<option value=' + this.MemberID + '>' + this.MemberID + '-' + this.MemberName + '</option>'); });
+                    }).fail(function (jqXHR, textStatus, errorThrown) { alert('Error getting members!'); });
+                }).fail(function (jqXHR, textStatus, errorThrown) { alert('Error getting groups!'); });
+                $.getJSON('@Url.Action(actionName: "GetProduct", controllerName: "Products", routeValues: new { Area = "MF" })', { ProjectID: $('#ProjectID').val() }, function (data) { $.each(data, function () { $('#ProductID').append('<option value=' + this.ProductID + '>' + this.ProductName + '</option>'); });
+                }).fail(function (jqXHR, textStatus, errorThrown) { alert('Error getting products!'); });
+            }).fail(function (jqXHR, textStatus, errorThrown) { alert('Error getting projects!'); });
+
+            // Dropdown list change event.
+            $('#ProjectID').change(function () {
+                $('#GroupsID option').remove(); $.getJSON('@Url.Action(actionName: "GetGroups", controllerName: "Groups", routeValues: new { Area = "MF" })', { ProjectID: $('#ProjectID').val() }, function (data) { $.each(data, function () { $('#GroupsID').append('<option value=' + this.GroupsID + '>' + this.GroupsName + '</option>'); });
+                    $('#MemberID option').remove(); $.getJSON('@Url.Action(actionName: "GetMember", controllerName: "Members", routeValues: new { Area = "MF" })', { GroupsID: $('#GroupsID').val() }, function (data) { $.each(data, function () { $('#MemberID').append('<option value=' + this.MemberID + '>' + this.MemberID + '-' + this.MemberName + '</option>'); });
+                    }).fail(function (jqXHR, textStatus, errorThrown) { alert('Error getting member!'); });
+                }).fail(function (jqXHR, textStatus, errorThrown) { alert('Error getting group!'); });
+                $('#ProductID option').remove(); $.getJSON('@Url.Action(actionName: "GetProduct", controllerName: "Products", routeValues: new { Area = "MF" })', { ProjectID: $('#ProjectID').val() }, function (data) { $.each(data, function () { $('#ProductID').append('<option value=' + this.ProductID + '>' + this.ProductName + '</option>'); });
+                }).fail(function (jqXHR, textStatus, errorThrown) { alert('Error getting group!'); });
+
+                @*$('#ProductID option').remove();
+                $.getJSON('@Url.Action(actionName: "GetProduct", controllerName: "Products", routeValues: new { Area = "MF" })', { ProjectID: $('#ProjectID').val() }, function (data) {
+                    $.each(data, function () {
+                        $('#ProductID').append('<option value=' +
+                          this.ProductID + '>' + this.ProductName + '</option>');
+                    });
+                }).fail(function (jqXHR, textStatus, errorThrown) {
+                    alert('Error getting products!');*@
+            });
+
+            $('#GroupsID').change(function () {
+                $('#MemberID option').remove();
+                $.getJSON('@Url.Action(actionName: "GetMember", controllerName: "Members", routeValues: new { Area = "MF" })', { GroupsID: $('#GroupsID').val() }, function (data) {
+                    $.each(data, function () {
+                        $('#MemberID').append('<option value=' +
+                          this.MemberID + '>' + this.MemberID + '-' + this.MemberName + '</option>');
+                    });
+                }).fail(function (jqXHR, textStatus, errorThrown) {
+                    alert('Error getting products!');
+                });
+            });
+        });
+    </script>
+}

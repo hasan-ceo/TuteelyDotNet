@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="@Url.Content("~/Images/icon.png?"+@DateTime.Now.ToFileTime())" sizes="any" type="image/svg+xml">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nyika - HR + Payroll + Accounts</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body style="padding-top: 78px" class="bg-dark">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="@Url.Content("~/")">
+            <img src="~/Images/logo.png" alt="Nyika logo" />
+
+        </a>
+
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto "></ul>
+            <ul class="nav navbar-nav navbar-right">
+                @*<li> <a class="btn btn-outline-secondary mx-md-1 my-md-0" href="~/dashboard/Index">Dashboard</a></li>*@
+                <li><a class="btn btn-outline-secondary mx-md-1 my-md-0 " href="~/BasicSetup/DashboardS">Basic Setup</a></li>
+                <li><a class="btn btn-outline-secondary mx-md-1 my-md-0" href="~/HRnPayroll/DashboardH">HR &amp Payroll</a></li>
+                <li><a class="btn btn-outline-secondary mx-md-1 my-md-0" href="~/Accounts/DashboardA">Accounts</a></li>
+                <li><a class="btn btn-outline-secondary mx-md-1 my-md-0" href="~/MF/DashboardM">Microfinance</a></li>
+                <li><a class="btn btn-outline-secondary mx-md-1 my-md-0" href="~/Invoices/DashboardI">Invoices</a></li>
+            </ul>
+            @Html.Partial("_LoginPartial")
+
+        </div>
+    </nav>
+
+
+    <div class="container-fluid bg-light p-md-1">
+        <div class="row p-md-0 m-md-0">
+            @*left sidebar*@
+            <div class="col-md-2 p-md-0 m-md-0">
+
+
+                <div class="card text-white bg-dark" style="min-height:540px">
+                    <div class="card-header">
+                        <h4>Microfinance</h4>
+                    </div>
+                    <div class="card-body p-md-1">
+                        
+                        <div id="accordion">
+                            <div class="card text-white bg-dark">
+                                <div class="card-header p-md-0 m-md-0" id="headingLoan">
+                                    <h5 class="p-md-0 m-md-0">
+                                        <a class = "btn btn-link bg-secondary text-white btn-block p-md-0 m-md-0" href="@Url.Content("~/MF/Allreports/Index")" style="text-decoration:none">
+                                            Reports
+                                        </a>
+                                     
+                                    </h5>
+                                </div>
+
+                            </div>
+                            <div class="card text-white bg-dark">
+                                <div class="card-header p-md-0 m-md-0" id="headingLoan">
+                                    <h5 class="p-md-0 m-md-0">
+                                        <button class="btn btn-link collapsed bg-secondary text-white btn-block p-md-0 m-md-0" data-toggle="collapse" data-target="#collapseLoan" aria-expanded="true" aria-controls="collapseLoan" style="text-decoration:none">
+                                            Loan info
+                                        </button>
+                                    </h5>
+                                </div>
+
+                                <div id="collapseLoan" class="collapse" aria-labelledby="headingLoan" data-parent="#accordion">
+                                    <div class="card-body p-md-0">
+                                        @Html.ActionLink("Loan Collection", "Index", "LoanCollction", new { Area = "MF" }, htmlAttributes: new { @class = "btn btn-light d-block p-md-0 mx-md-0 my-md-1" })
+                                        @Html.ActionLink("Daily Collection Register", "Index", "DCR", new { Area = "MF" }, htmlAttributes: new { @class = "btn btn-light d-block p-md-0 mx-md-0 my-md-1" })
+                                        @Html.ActionLink("Loan Settle", "Index", "LoanSettle", new { Area = "MF" }, htmlAttributes: new { @class = "btn btn-light d-block p-md-0 mx-md-0 my-md-1" })
+                                        @Html.ActionLink("Security Withdraw", "Index", "LoanSecurity", new { Area = "MF" }, htmlAttributes: new { @class = "btn btn-light d-block p-md-0 mx-md-0 my-md-1" })
+                                        @Html.ActionLink("Product Change", "ProductChange", "LoanProductChange", new { Area = "MF" }, htmlAttributes: new { @class = "btn btn-light d-block p-md-0 mx-md-0 my-md-1" })
+                                        @Html.ActionLink("Loan", "Index", "Loans", new { Area = "MF" }, htmlAttributes: new { @class = "btn btn-light d-block p-md-0 mx-md-0 my-md-1" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card text-white bg-dark">
+                                <div class="card-header p-md-0 m-md-0" id="headingMember">
+                                    <h5 class="p-md-0 m-md-0">
+                                        <button class="btn btn-link collapsed bg-secondary text-white btn-block p-md-0 m-md-0" data-toggle="collapse" data-target="#collapseMember" aria-expanded="false" aria-controls="collapseMember" style="text-decoration:none">
+                                            Member info
+                                        </button>
+                                    </h5>
+                                </div>
+
+                                <div id="collapseMember" class="collapse" aria-labelledby="headingMember" data-parent="#accordion">
+                                    <div class="card-body p-md-0">
+                                        @Html.ActionLink("Member", "Index", "Members", new { Area = "MF" }, htmlAttributes: new { @class = "btn btn-light d-block p-md-0 mx-md-0 my-md-1" })
+                                        @*  @Html.ActionLink("Member", "Index", "Members", new { Area = "MF" }, htmlAttributes: new { @class = "btn btn-light d-block p-md-0 mx-md-0 my-md-1" })*@
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card text-white bg-dark">
+                                <div class="card-header p-md-0 m-md-0" id="headingGroup">
+                                    <h5 class="p-md-0 m-md-0">
+                                        <button class="btn btn-link collapsed bg-secondary  text-white btn-block p-md-0 m-md-0" data-toggle="collapse" data-target="#collapseGroup" aria-expanded="false" aria-controls="collapseGroup" style="text-decoration:none">
+                                            Group info
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseGroup" class="collapse" aria-labelledby="headingGroup" data-parent="#accordion">
+                                    <div class="card-body p-md-0">
+                                        @Html.ActionLink("Group", "Index", "Groups", new { Area = "MF" }, htmlAttributes: new { @class = "btn btn-light d-block p-md-0 mx-md-0 my-md-1" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card text-white bg-dark">
+                                <div class="card-header p-md-0 m-md-0" id="headingBasic">
+                                    <h5 class="p-md-0 m-md-0">
+                                        <button class="btn btn-link collapsed bg-secondary  text-white btn-block p-md-0 m-md-0" data-toggle="collapse" data-target="#collapseBasic" aria-expanded="false" aria-controls="collapseBasic" style="text-decoration:none">
+                                            Basic Info
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapseBasic" class="collapse" aria-labelledby="headingBasic" data-parent="#accordion">
+                                    <div class="card-body p-md-0">
+                                        @Html.ActionLink("Loan Cycle", "Index", "LoanCycles", new { Area = "MF" }, htmlAttributes: new { @class = "btn btn-light d-block p-md-0 mx-md-0 my-md-1" })
+                                        @Html.ActionLink("Scheme", "Index", "Schemes", new { Area = "MF" }, htmlAttributes: new { @class = "btn btn-light d-block p-md-0 mx-md-0 my-md-1" })
+                                        @Html.ActionLink("Product", "Index", "Products", new { Area = "MF" }, htmlAttributes: new { @class = "btn btn-light d-block p-md-0 mx-md-0 my-md-1" })
+                                        @Html.ActionLink("Project", "Index", "Projects", new { Area = "MF" }, htmlAttributes: new { @class = "btn btn-light d-block p-md-0 mx-md-0 my-md-1" })
+                                        <z/div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @*Middle*@
+            <div class="col-md-10 pl-md-1 p-md-0 m-md-0">
+                <div class="container-fluid bg-light p-md-0 m-md-0" style="min-height:540px">
+
+                    @RenderBody()
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row bg-dark text-white text-center">
+            <div class="col-md-12">
+                <footer class="p-md-3">
+                    <h6><strong>Developed by <a href="http://www.azmainventures.com" style="color:#ff6038">Azmain Ventures</a></strong></h6>
+                </footer>
+
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    @RenderSection("ProjectGroup", false)
+
+    <script type="text/javascript">
+        $('#sandbox-container input').datepicker({
+            format: "dd/mm/yyyy"
+        });
+    </script>
+</body>
+</html>

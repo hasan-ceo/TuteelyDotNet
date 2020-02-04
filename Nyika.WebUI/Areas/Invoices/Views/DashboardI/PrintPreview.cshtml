@@ -1,0 +1,276 @@
+﻿@model Nyika.WebUI.Areas.Invoices.Models.InvCart
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Invoices/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="card text-dark p-md-0 mx-0 my-0" style="min-height:540px">
+    <div class="card-header bg-dark">
+
+        <div class="row">
+            <div class="col-md-4">
+                <h4 class="text-white">Print Preview</h4>
+            </div>
+            <div class="col-md-8 text-right">
+                <div class="btn-group btn-group-justified">
+                    @using (Html.BeginForm("Delete", "DashboardI"))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(model => model.InvoiceID)
+                        <input type="submit" value="Delete" class="btn btn-danger mx-md-1" />
+                    }
+                    <input type="submit" value="Print" class="btn btn-secondary mx-md-1" onClick="printdiv('div_print');"/>
+                    @Html.ActionLink("Back", "Inv", new { id = Model.InvoiceID }, new { @class = "btn btn-secondary" })
+                    @*<a class="btn btn-secondary" href="@Url.Action("Inv", "Invoices", new { id = item.InvoiceID})" data-toggle="tooltip" data-placement="top" title="Edit"><strong>E</strong></a>*@
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="card-body p-md-2 b-0 m-md-0 text-dark">
+        <div class="container py-md-5" id="div_print">
+       
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-6 text-left">
+                            <div class="py-md-5">
+                                <h1><strong>INVOICE</strong></h1>
+                            </div>
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <img class="img-fluid" alt="logo" src="@Url.Content(Model.ImageUrl)" style="max-height:50px" />
+                            <table style="width: 100%;">
+
+                                <tr>
+                                    <td><strong>@Html.DisplayFor(model => model.CompanyName)</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayFor(model => model.CompanyAddress)</td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <i class="fa fa-phone"></i>
+                                        @Html.DisplayFor(model => model.CompanyContactNumber)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <i class="fa fa-envelope"></i>
+                                        @Html.DisplayFor(model => model.CompanyEmail)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(model => model.CompanyTIN),
+                                        @Html.DisplayFor(model => model.CompanyVAT)
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <hr />
+
+                    <div class="row">
+                        <div class="col-md-8">
+                            <table style="width: 100%;">
+                                <tr>
+                                    <td><h2 class="p-md-0 m-md-0"><strong>Bill To</strong></h2></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>@Html.DisplayFor(model => model.PartyName)</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayFor(model => model.PartyAddress)</td>
+                                </tr>
+                                <tr>
+                                    <td>@Html.DisplayFor(model => model.PartyZIPCode)</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <i class="fa fa-phone"></i>
+                                        @Html.DisplayFor(model => model.PartyContactNumber) <i class="fa fa-envelope"></i>
+                                        @Html.DisplayFor(model => model.PartyEmail)
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </div>
+                        <div class="col-md-4">
+                            <table style="width: 100%;">
+                                <tr>
+                                    <td>
+                                        <strong>
+                                            @Html.DisplayNameFor(model => model.InvoiceNumber) :
+                                        </strong>
+                                    </td>
+                                    <td class="text-right">@Html.DisplayFor(model => model.InvoiceNumber)</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>
+                                            @Html.DisplayNameFor(model => model.InvoiceDate) :
+                                        </strong>
+                                    </td>
+                                    <td class="text-right">@Model.InvoiceDate.ToString("dd/MMM/yyyy")</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>
+                                            @Html.DisplayNameFor(model => model.DueDate) :
+                                        </strong>
+                                    </td>
+                                    <td class="text-right">@Model.DueDate.ToString("dd/MMM/yyyy")</td>
+                                </tr>
+                                <tr c>
+                                    <td>
+                                        <strong>
+                                            @Html.DisplayNameFor(model => model.JobDescription) :
+                                        </strong>
+                                    </td>
+                                    <td class="text-right">@Html.DisplayFor(model => model.JobDescription)</td>
+                                </tr>
+
+                            </table>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row my-md-2">
+                <div class="col-md-12">
+                    <div class="row p-md-0 m-md-0">
+                        <div class="col-md-12 p-md-0 m-md-0">
+
+                            @*Invoce Details Show*@
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <table id="cartTable" class="table table-responsive-md table-md table-light table-bordered" style="table-layout: fixed">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th class="text-left" style="width:60%">Item Description</th>
+                                                <th class="text-center">Cost</th>
+                                                <th class="text-center">Quantity</th>
+                                                <th class="text-center">Amount</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var line in Model.Lines)
+                                            {
+                                                <tr>
+
+                                                    <td class="text-left" style="word-wrap: break-word;width:60%"><strong>@line.Item</strong> <br /> @line.Description</td>
+                                                    <td class="text-right">@line.Cost</td>
+                                                    <td class="text-right">@line.Quantity</td>
+                                                    <td class="text-right">@line.Amount</td>
+
+
+                                                </tr>
+                                            }
+                                        </tbody>
+
+                                    </table>
+                                </div>
+                            </div>
+
+                            @*Invoce Footer*@
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <div style="min-height:85px" class="border p-md-3">
+                                        @Html.DisplayFor(model => model.PaymentTerms)
+                                    </div>
+                                    <div style="min-height:85px" class="border p-md-3 my-md-2">
+                                        @Html.DisplayFor(model => model.ClientNotes)
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <table style="width: 100%;">
+                                        <tr>
+                                            <td>
+                                                <strong>
+                                                    @Html.DisplayNameFor(model => model.SubTotal) :
+                                                </strong>
+                                            </td>
+                                            <td class="text-right">@Html.DisplayFor(model => model.SubTotal)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>
+                                                    @Html.DisplayNameFor(model => model.Discount) :
+                                                </strong>
+                                            </td>
+                                            <td class="text-right">@Html.DisplayFor(model => model.Discount)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>
+                                                    @Html.DisplayNameFor(model => model.Tax) :
+                                                </strong>
+                                            </td>
+                                            <td class="text-right">@Html.DisplayFor(model => model.Tax)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>
+                                                    @Html.DisplayNameFor(model => model.InvoiceTotal) :
+                                                </strong>
+                                            </td>
+                                            <td class="text-right">@Html.DisplayFor(model => model.InvoiceTotal)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>
+                                                    @Html.DisplayNameFor(model => model.AmountPaid) :
+                                                </strong>
+                                            </td>
+                                            <td class="text-right">@Html.DisplayFor(model => model.AmountPaid)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <strong>
+                                                    @Html.DisplayNameFor(model => model.DueAmount) :
+                                                </strong>
+                                            </td>
+                                            <td class="text-right">@Html.DisplayFor(model => model.DueAmount)</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+
+<script>
+        function printdiv(printpage) {
+            var headstr = "<html><head><title></title></head><body>";
+            var footstr = "</body>";
+            var newstr = document.all.item(printpage).innerHTML;
+            var oldstr = document.body.innerHTML;
+            document.body.innerHTML = headstr + newstr + footstr;
+            window.print();
+            document.body.innerHTML = oldstr;
+            return false;
+        }
+</script>

@@ -1,0 +1,324 @@
+﻿@model Nyika.WebUI.Areas.Invoices.Models.InvCart
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Invoices/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="card text-dark p-md-0 mx-0 my-0" style="min-height:540px">
+    <div class="card-header bg-dark">
+
+        <div class="row">
+            <div class="col-md-4">
+                <h4 class="text-white">Invoice</h4>
+            </div>
+            <div class="col-md-8 text-right">
+                <div class="btn-group btn-group-justified">
+                    @*@Html.ActionLink("Print Preview", "PrintPreview", null, new { @class = "btn btn-secondary mx-md-1" })*@
+                    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="card-body p-md-2 b-0 m-md-0 text-dark">
+        <div class="row">
+
+            <div class="col-md-6">
+                @using (Html.BeginForm("Inv", "DashboardI"))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="row p-md-0 m-md-0">
+
+                        <div class="col-md-6">
+                            @if (Model.ImageUrl != null)
+                            {
+                                <img class="img-fluid" alt="logo" src="@Url.Content(Model.ImageUrl)" style="max-height:50px" />
+                            }
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group  p-md-0 m-md-0">
+                                @Html.LabelFor(model => model.InvoiceDate, htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                                <div class="col-md-12 p-md-0 m-md-0">
+                                    @Html.EditorFor(model => model.InvoiceDate, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                    @Html.ValidationMessageFor(model => model.InvoiceDate, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group p-md-0 m-md-0 visib">
+                                @Html.LabelFor(model => model.DueDate, htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                                <div class="col-md-12 p-md-0 m-md-0">
+                                    @Html.EditorFor(model => model.DueDate, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.DueDate, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group  p-md-0 m-md-0">
+                                @Html.LabelFor(model => model.InvoiceNumber, htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                                <div class="col-md-12 p-md-0 m-md-0">
+                                    @Html.EditorFor(model => model.InvoiceNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.InvoiceNumber, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group p-md-0 m-md-0">
+                                @Html.LabelFor(model => model.JobDescription, htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                                <div class="col-md-12 p-md-0 m-md-0">
+                                    @Html.EditorFor(model => model.JobDescription, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.JobDescription, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group  p-md-0 m-md-0">
+                                @Html.Label("Bill To", htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                                <div class="col-md-12 p-md-0 m-md-0">
+                                    @Html.DropDownList("PartyID", null, htmlAttributes: new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group p-md-0 m-md-0">
+                                @Html.Label("Payment Terms", htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                                <div class="col-md-12 p-md-0 m-md-0">
+                                    @Html.EditorFor(model => model.PaymentTerms, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.PaymentTerms, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group p-md-0 m-md-0">
+                                @Html.LabelFor(model => model.ClientNotes, htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                                <div class="col-md-12 p-md-0 m-md-0">
+                                    @Html.EditorFor(model => model.ClientNotes, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.ClientNotes, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group p-md-0 m-md-0">
+                                @Html.LabelFor(model => model.Discount, htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                                <div class="col-md-12 p-md-0 m-md-0">
+                                    @Html.EditorFor(model => model.Discount, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Discount, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group p-md-0 m-md-0">
+                                @Html.LabelFor(model => model.TaxPercent, htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                                <div class="col-md-12 p-md-0 m-md-0">
+                                    @Html.EditorFor(model => model.TaxPercent, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.TaxPercent, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group p-md-0 m-md-0">
+                                @Html.LabelFor(model => model.AmountPaid, htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                                <div class="col-md-12 p-md-0 m-md-0">
+                                    @Html.EditorFor(model => model.AmountPaid, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.AmountPaid, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-inline p-md-0 m-md-0">
+                                @Html.Label("=================", htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0 text-white" })
+                                <div class="col-md-12 p-md-0 my-md-0">
+                                    <input type="submit" value="Print Preview" class="btn btn-secondary btn-block" />
+                                </div>
+                                @*<div class="col-md-6 p-md-0 my-md-0">
+                                <input type="submit" value="Print Preview" class="btn btn-success btn-block" />
+                            </div>*@
+                            </div>
+                        </div>
+
+                    </div>
+                }
+            </div>
+
+            <div class="col-md-6">
+                <div class="row p-md-0 m-md-0">
+                    <div class="col-md-12 p-md-0 m-md-0">
+
+                        @using (Html.BeginForm("InvDetailSave", "DashboardI"))
+                        {
+                        @Html.AntiForgeryToken()
+                        <div class="row bg-dark text-white p-md-2 mx-md-0 my-md-1">
+
+                            <div class="col-md-3 p-md-0 m-md-0">
+                                <div class="form-group p-md-0 m-md-0">
+                                    @Html.Label("Item", htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0 text-center" })
+                                    <div class="col-md-12 p-md-0 m-md-0">
+                                        @Html.Editor("Item", new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessage("Item", "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 p-md-0 m-md-0">
+                                <div class="form-group p-md-0 m-md-0">
+                                    @Html.Label("Description", htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0 text-center" })
+                                    <div class="col-md-12 p-md-0 m-md-0">
+                                        @Html.Editor("Description", new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessage("Description", "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-2 p-md-0 m-md-0">
+                                <div class="form-group p-md-0 m-md-0">
+                                    @Html.Label("Cost", htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0 text-center" })
+                                    <div class="col-md-12 p-md-0 m-md-0">
+                                        @Html.Editor("Cost", new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessage("Cost", "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-2 p-md-0 m-md-0">
+                                <div class="form-group p-md-0 m-md-0">
+                                    @Html.Label("Quantity", htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0 text-center" })
+                                    <div class="col-md-12 p-md-0 m-md-0">
+                                        @Html.Editor("Quantity", new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessage("Quantity", "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-2 p-md-0 m-md-0">
+                                <div class="form-group p-md-0 m-md-0">
+                                    @Html.Label("Click", htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0 text-dark text-center" })
+                                    <div class="col-md-12 p-md-0 m-md-0">
+                                        <input type="submit" value="Add Item" class="btn btn-secondary btn-block" />
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        }
+
+                        @*Invoce Details Show*@
+                        <div class="row">
+                            <div class="col-md-12">
+                                <table id="cartTable" class="table table-responsive-md table-md table-light table-hover table-striped" style="table-layout: fixed">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th class="text-left">Item</th>
+                                            <th class="text-center">Description</th>
+                                            <th class="text-center">Cost</th>
+                                            <th class="text-center">Quantity</th>
+                                            <th class="text-center">Amount</th>
+                                            <th class="text-center"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var line in Model.Lines)
+                                        {
+                                        <tr>
+
+                                            <td class="text-left" style="word-wrap: break-word;">@line.Item</td>
+                                            <td class="text-left" style="word-wrap: break-word;">@line.Description</td>
+                                            <td class="text-right">@line.Cost</td>
+                                            <td class="text-right">@line.Quantity</td>
+                                            <td class="text-right">@line.Amount</td>
+
+                                            <td>
+                                                @using (Html.BeginForm("RemoveFromInvoice", "DashboardI"))
+                                                    {
+                                                    @Html.AntiForgeryToken()
+                                                    @Html.Hidden("removeItem", line.Item)
+                                                    <input class="btn btn-md btn-danger"
+                                                           type="submit" value="Remove" />
+                                                    }
+                                            </td>
+                                        </tr>
+                                        }
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="4" class="text-right"><strong>SubTotal:</strong></td>
+                                            <td class="text-right">
+                                                @Model.SubTotal
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="4" class="text-right"><strong>Discount:</strong></td>
+                                            <td class="text-right">
+                                                @Model.Discount
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="4" class="text-right"><strong>Tax:</strong></td>
+                                            <td class="text-right">
+                                                @Model.Tax
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="4" class="text-right"><strong>Invoice Total:</strong></td>
+                                            <td class="text-right">
+                                                @Model.InvoiceTotal
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="4" class="text-right"><strong>Amount Paid:</strong></td>
+                                            <td class="text-right">
+                                                @Model.AmountPaid
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="4" class="text-right"><strong>Due Amount:</strong></td>
+                                            <td class="text-right">
+                                                @Model.DueAmount
+                                            </td>
+                                            <td></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+
+                        @*Invoce Footer*@
+                        <div class="row">
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            
+        </div>
+
+
+
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-12 p-md-0 m-md-0">
+            <h4>@ViewBag.Msg</h4>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+

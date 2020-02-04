@@ -1,0 +1,79 @@
+﻿@model Nyika.WebUI.Models.ItemVM
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_LayoutShop.cshtml";
+}
+
+<div class="card text-center border-0 p-0 m-0 my-3">
+    <div class="card-body p-0 m-0">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="~/"><img src="~/images/svg/home.svg" alt="home" style="width:30px"></a></li>
+                <li class="breadcrumb-item"><a href="~/Item/@Model.CategoryUrl" style="text-decoration:none">@Model.CategoryName</a></li>
+                <li class="breadcrumb-item"><a href="~/Item/@Model.CategorySubUrl" style="text-decoration:none">@Model.CategorySubName</a></li>
+                @*<li class="breadcrumb-item active" aria-current="page">@Model.CategorySubName</li>*@
+            </ol>
+        </nav>
+    </div>
+
+</div>
+
+<div class="container mb-5">
+    <div class="row border">
+        <div class="col-md-7 text-center my-3">
+            <div class="row">
+                <div class="col-md-12 p-0 m-0">
+                    <img class="img-fluid" src="@Url.Content(Model.FrontUrl)?@DateTime.Now.ToFileTime())" alt="@Model.ItemName">
+                </div>
+                <div class="w-100"></div>
+                <div class="col-6 pl-2 pr-1 py-2 m-0">
+                    <img class="img-fluid" src="@Url.Content(Model.BackUrl)?@DateTime.Now.ToFileTime())" alt="@Model.ItemName">
+                </div>
+                <div class="col-6 pr-2 pl-1 py-2 m-0">
+                    <img class="img-fluid" src="@Url.Content(Model.SideUrl)?@DateTime.Now.ToFileTime())" alt="@Model.ItemName">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-5 my-3">
+            <div class="row">
+                <div class="col-md-12 my-3">
+                    <h5>@Nyika.WebUI.LanguageResources.Global.ItemNo @Model.ItemNo</h5>
+                    <h3>@Model.ItemName</h3>
+                    @if (string.IsNullOrEmpty(Model.Description) == false)
+                    {
+                        <h4>@Html.Raw(Model.Size)</h4>
+
+                    }
+                    <p class="d-inline">
+                        @if (Model.OldPrice != 0)
+                        {
+                            <div class="d-inline p-0"><strike style="color:red">৳ @Model.OldPrice</strike></div>
+                            <div class="d-inline p-0"><strong>/</strong></div>
+                        }
+                        <div class="d-inline p-0" style="font-size:x-large">৳ @Model.NewPrice</div>
+                    </p>
+                    @using (Html.BeginForm("AddToBag", "ShopBag", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        @Html.Hidden("ItemID", Model.ItemID)
+                        @Html.Hidden("returnUrl", Url.Content("~/Item/" + @Model.CategorySubUrl))
+                        <button class="btn btn-danger btn-lg">
+                            @Nyika.WebUI.LanguageResources.Global.AddtoBag
+                        </button>
+                    }
+                </div>
+                <div class="w-100"></div>
+                <div class="col-md-12 my-3">
+                    @if (string.IsNullOrEmpty(Model.Description) == false)
+                    {
+                        <h3>@Nyika.WebUI.LanguageResources.Global.Description</h3>
+                        @Html.Raw(Model.Description)
+                    }
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

@@ -1,0 +1,173 @@
+﻿@using Mvc.CascadeDropDown
+@model Nyika.WebUI.Areas.MF.Models.ReportViewModelM
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/MF/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("Export", "Allreports"))
+{
+    @Html.AntiForgeryToken()
+    <div class="card text-white bg-dark p-md-0 mx-0 my-0" style="min-height:540px">
+        <div class="card-header bg-dark">
+            <div class="row">
+                <div class="col-md-4">
+                    <h4>Reports</h4>
+                </div>
+                <div class="col-md-8 text-right">
+                    <div class="btn-group btn-group-justified">
+                        @*<input type="submit" value="Save" class="btn btn-secondary mx-md-1" />
+                            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })*@
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="card-body p-md-1">
+
+
+            <div class="row m-md-1">
+                @*<div class="col-3 m-md-0">
+
+
+
+                        <div class="form-horizontal m-md-1">
+                            <div class="form-group m-md-1">
+                                @Html.DropDownList("AccountSubHeadID", null, htmlAttributes: new { @class = "form-control" })
+                            </div>
+                            <div class="form-group m-md-1">
+                                @Html.DropDownList("BankID", null, htmlAttributes: new { @class = "form-control" })
+                            </div>
+                            <div class="form-group m-md-1">
+                                @Html.DropDownList("PartyID", null, htmlAttributes: new { @class = "form-control" })
+                            </div>
+                            <div class="form-group m-md-1">
+
+                                <div id="sandbox-container">
+                                    @Html.TextBox("FromDate", "", new { @class = "form-control ", @placeholder = "From Date", @Value = DateTime.Now.Date.AddMonths(-1).ToString("dd/MMM/yyyy") })
+                                    @Html.ValidationMessage("FromDate", "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group m-md-1">
+
+                                <div id="sandbox-container">
+                                    @Html.TextBox("TillDate", "", new { @class = "form-control ", @placeholder = "Till Date" ,@Value=DateTime.Now.Date.ToString("dd/MMM/yyyy") })
+                                    @Html.ValidationMessage("TillDate", "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>*@
+
+                <div class="col-md-3">
+
+                    <div class="form-group p-md-0 m-md-0">
+                        @Html.LabelFor(model => model.SelectedProject, "Project", htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                        <div class="col-md-12 p-md-0 m-md-0">
+                            @Html.DropDownListFor(p => p.SelectedProject, Model.Project, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.SelectedProject, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group p-md-0 m-md-0">
+                        @Html.LabelFor(model => model.SelectedGroup, "Group", htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                        <div class="col-md-12 p-md-0 m-md-0">
+                            @Html.CascadingDropDownListFor(expression: m => m.SelectedGroup,
+                                triggeredByProperty: m => m.SelectedProject,
+                                url: Url.Action("GetGroups", "Groups"),
+                                ajaxActionParamName: "ProjectID",
+                                disabledWhenParentNotSelected: true,
+                                htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.SelectedGroup)
+                        </div>
+                    </div>
+
+                    <div class="form-group p-md-0 m-md-0">
+                        @Html.LabelFor(model => model.SelectedMember, "Member", htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                        <div class="col-md-12 p-md-0 m-md-0">
+                            @Html.CascadingDropDownListFor(expression: m => m.SelectedMember,
+                                triggeredByProperty: m => m.SelectedGroup,
+                                url: Url.Action("GetMemberAll", "Members"),
+                                ajaxActionParamName: "GroupsID",
+                                disabledWhenParentNotSelected: true,
+                                htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.SelectedMember)
+                        </div>
+                    </div>
+
+                    <div class="form-group p-md-0 m-md-0">
+                        @Html.LabelFor(model => model.SelectedLoan, "Loan", htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                        <div class="col-md-12 p-md-0 m-md-0">
+                            @Html.CascadingDropDownListFor(expression: m => m.SelectedLoan,
+                                triggeredByProperty: m => m.SelectedMember,
+                                url: Url.Action("GetLoan", "Loans"),
+                                ajaxActionParamName: "MemberID",
+                                disabledWhenParentNotSelected: true,
+                                htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.SelectedMember)
+                        </div>
+                    </div>
+
+                    <div class="form-group p-md-0 m-md-0">
+                        @Html.LabelFor(model => model.SelectedDay, htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                        <div class="col-md-12 p-md-0 m-md-0">
+                            @* @Html.DropDownListFor(model => model.ColDay, EnumHelper.GetSelectList(typeof(Nyika.Domain.Entities.Setup.Weekdays)), "-- Choose --", new { @class = "postfix", @required = "required" })*@
+                            @Html.DropDownListFor(model => model.SelectedDay, new SelectList(
+    new List<SelectListItem>
+    {
+        new SelectListItem { Text = "Monday", Value = "2"},
+        new SelectListItem { Text = "Tuesday", Value = "3" },
+        new SelectListItem { Text = "Wednesday", Value = "4" },
+        new SelectListItem { Text = "Thursday", Value = "5" },
+        new SelectListItem { Text = "Friday", Value = "6" }
+    }, "Value", "Text",2), htmlAttributes: new { @class = "form-control" })
+                            @*@Html.EditorFor(model => model.ColDay, new { htmlAttributes = new { @class = "form-control" } })*@
+                            @Html.ValidationMessageFor(model => model.SelectedDay, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group p-md-0 m-md-0">
+                        @Html.LabelFor(model => model.SelectedMember, "From Date", htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                        <div class="col-md-12 p-md-0 m-md-0">
+                            @Html.EditorFor(model => model.FromDate, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+
+                    <div class="form-group p-md-0 m-md-0">
+                        @Html.LabelFor(model => model.SelectedMember, "Till Date", htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                        <div class="col-md-12 p-md-0 m-md-0">
+                            @Html.EditorFor(model => model.TillDate, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-3">
+                    <input type="submit" value="Member List - Active" class="btn btn-default btn-block m-md-1" name="BtnAll" />
+                    <input type="submit" value="Member List - Inactive" class="btn btn-default btn-block m-md-1" name="BtnAll" />
+                    <input type="submit" value="Member Wise Disbursement List" class="btn btn-default btn-block m-md-1" name="BtnAll" />
+                    <input type="submit" value="Member Wise Security Ledger" class="btn btn-default btn-block m-md-1" name="BtnAll" />
+                    <input type="submit" value="Group Security Balance" class="btn btn-default btn-block m-md-1" name="BtnAll" />
+                    <input type="submit" value="Total Security Balance" class="btn btn-default btn-block m-md-1" name="BtnAll" />
+                    <input type="submit" value="DCR List" class="btn btn-default btn-block m-md-1" name="BtnAll" />
+                    <input type="submit" value="DCR Mismatch" class="btn btn-default btn-block m-md-1" name="BtnAll" />
+
+                </div>
+                <div class="col-md-3">
+                    <input type="submit" value="Disbursement List" class="btn btn-default btn-block m-md-1" name="BtnAll" />
+                    <input type="submit" value="Outstanding Loan List" class="btn btn-default btn-block m-md-1" name="BtnAll" />
+                    <input type="submit" value="Loan Schedule" class="btn btn-default  btn-block m-md-1" name="BtnAll" />
+                    <input type="submit" value="Loan Collection" class="btn btn-default btn-block m-md-1" name="BtnAll" />
+                    <input type="submit" value="Monthly Collection Sheet" class="btn btn-default btn-block m-md-1" name="BtnAll" />
+                    <input type="submit" value="Monthly Data Collection" class="btn btn-default btn-block m-md-1" name="BtnAll" />
+                    @*<input type="submit" value="Monthly Basic Info" class="btn btn-default btn-block m-md-1" name="BtnAll" />*@
+
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+

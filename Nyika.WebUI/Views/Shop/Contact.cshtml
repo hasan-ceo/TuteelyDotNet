@@ -1,0 +1,176 @@
+﻿@using CaptchaMvc.HtmlHelpers
+@model Nyika.Domain.Entities.AVL.Feedback
+
+
+@{
+    ViewBag.Title = "Contact Us";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+
+<div class="container">
+
+
+    @using (Html.BeginForm("ContactSave", "Home", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <div class="card border-0" style="min-height:540px">
+            <div class="card-header border-0 bg-white text-center">
+                <h1>Contact Us</h1>
+            </div>
+            <div class="card-body">
+                <div class="row p-md-0 m-md-0">
+                    <div class="col-md-12 p-md-0 m-md-0">
+
+                        <div class="bg-danger text-white rounded text-center p-md-0 m-md-0">
+                            <p>
+                                This form should ONLY be used to provide comments or suggestions about this service or if you would like to advise us of errors, such as broken links.
+                                If you are having trouble trying to find a specific piece of service, please include as much information as possible about what it is you are looking for, how/where you have looked so far and where you would have expected to find it. This will help us in identifying any problems and correcting the underlying structure of the service.
+                            </p>
+                        </div>
+                        <div class="bg-white rounded text-center">
+                            <strong class="text-danger">None of the fields in the form below are compulsory.</strong>
+                            <br />
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-12 border border-dark rounded p-md-3">
+
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-12" })
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                <br />
+                                <strong> *This is only required if you want us to confirm to you that we've received your feedback and so that we can answer any questions you've asked. If you do not provide this, you will not receive a reply.</strong>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.TopicName, htmlAttributes: new { @class = "control-label col-md-12" })
+                            <div class="col-md-12">
+                                @Html.DropDownList("TopicName", null, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.TopicName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Detailsoferror, htmlAttributes: new { @class = "control-label col-md-12" })
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.Detailsoferror, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Detailsoferror, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.WebsiteLike, htmlAttributes: new { @class = "control-label col-md-12" })
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.WebsiteLike, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.WebsiteLike, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.WebsiteNotLike, htmlAttributes: new { @class = "control-label col-md-12" })
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.WebsiteNotLike, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.WebsiteNotLike, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Suggestions, htmlAttributes: new { @class = "control-label col-md-12" })
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.Suggestions, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Suggestions, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Comments, htmlAttributes: new { @class = "control-label col-md-12" })
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.Comments, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Comments, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Purposes, htmlAttributes: new { @class = "control-label col-md-12" })
+                            <div class="col-md-12">
+                                Business:   @Html.RadioButton("purposes", "Business", true)
+                                Private:  @Html.RadioButton("purposes", "Private")
+                                Both business and private:   @Html.RadioButton("purposes", "Both business and private")
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.UserType, htmlAttributes: new { @class = "control-label col-md-12" })
+                            <div class="col-md-12">
+                                Director: @Html.RadioButton("UserType", "Director", true)
+                                IT Manager: @Html.RadioButton("UserType", "IT Manager")
+                                HR Manager: @Html.RadioButton("UserType", "HR Manager")
+                                Account Manager: @Html.RadioButton("UserType", "Account Manager")
+                                Other: @Html.RadioButton("UserType", "Other")
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.VisitFrequency, htmlAttributes: new { @class = "control-label col-md-12" })
+                            <div class="col-md-12">
+                                First visit:   @Html.RadioButton("VisitFrequency", "First visit", true)
+                                Daily:  @Html.RadioButton("VisitFrequency", "Daily")
+                                Weekly:   @Html.RadioButton("VisitFrequency", "Weekly")
+                                Monthly:  @Html.RadioButton("VisitFrequency", "Monthly")
+                                Occasionally:  @Html.RadioButton("VisitFrequency", "Occasionally")
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                @Html.Captcha(4)                                
+                                <br />
+                                <p class="Error"> @ViewBag.ErrMessage </p>
+                            </div>
+      
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <input type="submit" value="Save" class="btn btn-dark btn-block btn-lg" />
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <br />
+                <br />
+                <div class="row text-center">
+                    <div class="col-md-12">
+
+                        <h5><strong>You may contact us using the information below.</strong></h5> <br />
+                        Azmain Ventures Limited <br />
+                        Mbezi Beach, Bagamayo road <br />
+                        Dar es Salaam <br />
+                        Tanzania <br />
+                        info@nyika.co <br />
+                        +255622131315
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

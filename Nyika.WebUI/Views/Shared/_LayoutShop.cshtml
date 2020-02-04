@@ -1,0 +1,169 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+
+    <meta charset="utf-8" />
+    <link rel="icon" href="@Url.Content("~/Images/bag02.svg?"+@DateTime.Now.ToFileTime())" sizes="any" type="image/svg+xml">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>অনলাইনে বাজার সদাই কেনাকাটা এবং ঢাকায়়় হোম ডেলিভারি ।  অনলাইনে কিনুন খাদ্য সামগ্রী, প্রসাধনী, শিশুদের পণ্য এবং আরো অনেক</title>
+    <meta name="keywords" content="HR, Payroll, Account, Accounting, Human Resources, Salary Sheet, Payslip" />
+    <meta name="description" content="Nyika is an online business intelligence 'Software as a Service' application provided by Azmain Ventures Limited comes as a saviour in the wild business world which helps company of any size to manage HR data, prepare Payroll, track Income and Expenditure and transparent Audit. Nyika is simple to use, affordable and reliable." />
+
+    <meta property="fb:app_id" content="241401279965867" />
+    <meta property="og:url" content="http://www.nyika.co/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Nyika - The All-in-One HR + Payroll + Accounting Solution" />
+    <meta property="og:description" content="Nyika is an online business intelligence 'Software as a Service' application provided by Azmain Ventures Limited comes as a saviour in the wild business world which helps company of any size to manage HR data, prepare Payroll, track Income and Expenditure and transparent Audit. Nyika is simple to use, affordable and reliable." />
+    <meta property="og:image" content="http://nyika.co/Images/background.png" />
+
+    <meta property="og:image:width" content="817" />
+    <meta property="og:image:height" content="466" />
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+    <style>
+        input,
+        select,
+        textarea {
+            max-width: 100%;
+        }
+    </style>
+
+</head>
+<body style="padding-top: 100px" class="bg-white">
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '241401279965867',
+                xfbml: true,
+                version: 'v2.10'
+            });
+
+            FB.AppEvents.logPageView();
+
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) { return; }
+            js = d.createElement(s); js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+
+
+
+
+
+    <div class="container-fluid fixed-top">
+        <div class="row justify-content-between bg-warning" style="min-height:103px">
+            <div class="col-6 text-left align-self-center">
+                <a class="navbar-brand" href="@Url.Content("~/")">
+                    <img src="@Url.Content("~/Images/allpaikarilogo.png?"+@DateTime.Now.ToFileTime())" alt="Nyika logo" />
+
+                </a>
+            </div>
+
+            <div class="col-6 align-self-center text-right">
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    @Html.ActionLink("En", "ChangeLanguage", "Language", new { SelectedLanguage = "en" }, new { @class = "btn btn-light align-self-center" })
+                    @Html.ActionLink("Bn", "ChangeLanguage", "Language", new { SelectedLanguage = "bn" }, new { @class = "btn btn-success align-self-center" })
+                    <a href="~/ShopBag/Index" class="btn btn-light align-self-center"><img src="~/Images/bag02.svg" alt="Bag" style="width:24px" /></a>   
+                    @*@Html.ActionLink(@Nyika.WebUI.LanguageResources.Global.Bag, "ChangeLanguage", "Language", new { SelectedLanguage = "bn" }, new { @class = "btn btn-light" })*@
+                </div>
+
+
+            </div>
+
+
+            <div class="col-12 text-left align-self-center">
+                @using (Html.BeginForm("Search", "Shop", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="input-group text-center">
+                        <input type="text" class="form-control" name="txtSearch" id="txtSearch" placeholder="@Nyika.WebUI.LanguageResources.Global.Search">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit">
+                                <img src="~/images/svg/magnifying-glass.svg" alt="home" style="width:30px">
+                            </button>
+                        </div>
+                    </div>
+
+                }
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+    <div class="container-fluid bg-white" style="min-height:540px">
+        @RenderBody()
+    </div>
+
+
+    <div class="container-fluid">
+        <footer class="py-md-3 my-md-3 bg-white text-dark">
+            <div class="row">
+                <div class="col-md-4">
+                    <ul class="list-inline text-md-left p-md-0 m-md-0">
+                        <li class="list-inline-item"><a href="~/Terms" style="text-decoration:none;color:black"><strong>@Nyika.WebUI.LanguageResources.Global.Terms</strong></a></li>
+                        <li class="list-inline-item">|</li>
+                        <li class="list-inline-item"><a href="~/Privacy" style="text-decoration:none;color:black"><strong>@Nyika.WebUI.LanguageResources.Global.Privacy</strong></a></li>
+                    </ul>
+                </div>
+                <div class="col-md-8">
+                    <p class="text-md-right p-md-1 m-md-0">@Nyika.WebUI.LanguageResources.Global.Copyright <a href="http://www.azmainventures.com" style="color:#ff6038;text-decoration:none"><strong>Azmain Ventures</strong></a></p>
+                    @*<p class="text-md-right p-md-1 m-md-0">Dar-es-Salaam, Tanzania</p>*@
+                </div>
+            </div>
+
+        </footer>
+        <div class="row">
+            <div class="col-md-12">
+                <table width="135" border="0" cellpadding="2" cellspacing="0" title="Click to Verify - This site chose GeoTrust SSL for secure e-commerce and confidential communications.">
+                    <tr>
+                        <td width="135" align="center" valign="top">
+                            <script type="text/javascript" src="https://seal.geotrust.com/getgeotrustsslseal?host_name=www.nyika.co&amp;size=M&amp;lang=en"></script><br />
+                            <a href="http://www.geotrust.com/ssl/" target="_blank" style="color:#000000; text-decoration:none; font:bold 7px verdana,sans-serif; letter-spacing:.5px; text-align:center; margin:0px; padding:0px;"></a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+    @*<div class="container-fluid fixed-bottom d-md-none d-sm-block text-center">
+            sdfsdf
+    </div>*@
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+
+        <!--Start of Tawk.to Script-->
+        <script type="text/javascript">
+            var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+            (function () {
+                var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+                s1.async = true;
+                s1.src = 'https://embed.tawk.to/5ac34c41d7591465c709242c/default';
+                s1.charset = 'UTF-8';
+                s1.setAttribute('crossorigin', '*');
+                s0.parentNode.insertBefore(s1, s0);
+            })();
+        </script>
+        <!--End of Tawk.to Script-->
+
+
+
+
+
+</body>
+</html>

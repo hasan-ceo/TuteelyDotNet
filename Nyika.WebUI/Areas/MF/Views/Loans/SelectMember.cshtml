@@ -1,0 +1,119 @@
+﻿@model IEnumerable<Nyika.Domain.Entities.MF.Member>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/MF/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card text-white bg-dark p-md-0 mx-0 my-0" style="min-height:540px">
+    <div class="card-header bg-dark">
+        <div class="row">
+            <div class="col-md-7">
+                <h4>New Loan - Select Member</h4>
+            </div>
+            <div class="col-md-5 justify-content-end">
+                <div class="form-inline">
+                    @using (Html.BeginForm("SelectMember", "Loans", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        @*<h6>Member No / Member Name / Group No / Group Name</h6>*@
+                        <div class="input-group text-center">
+                            <input type="text" class="form-control" name="txtSearch" id="txtSearch" placeholder="Member / Group">
+                            <div class="input-group-btn">
+                                <button class="btn btn-default" type="submit">
+                                    <strong>Find</strong>
+                                </button>
+                            </div>
+                        </div>
+
+                    }
+                    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
+                </div>
+
+                @*@Html.ActionLink("Create New", "Create",null,new { @class= "btn btn-secondary" })*@
+            </div>
+        </div>
+
+
+    </div>
+    <div class="card-body p-md-3 b-0 m-md-0 text-dark">
+        <div class="text-center p-md-2">
+            <h2>  @Html.ValidationMessage("MemberID", new { @class = "text-danger" })</h2>
+        </div>
+        <table class="table table-responsive-md table-sm table-secondary table-hover table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Groups.GroupsName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MemberNo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MemberName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Gender)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MembershipDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MembershipExpireDate)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SecurityAmountTotal)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ContactNumber)
+                    </th>
+                    @*<th>
+                        @Html.DisplayNameFor(model => model.Inactive)
+                    </th>*@
+                    <th></th>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Groups.GroupsName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MemberNo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MemberName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Gender)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MembershipDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MembershipExpireDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SecurityAmountTotal)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ContactNumber)
+                    </td>
+                    @*<td>
+                        @Html.DisplayFor(modelItem => item.Inactive)
+                    </td>*@
+                    <td class="text-right">
+                        <div class="btn-group text-white m-md-0 p-md-0">
+            
+                            <a class="btn btn-danger" href="@Url.Action("Create", "Loans", new { id = item.MemberID })" data-toggle="tooltip" data-placement="top" title="Select Member"><strong>Select</strong></a>
+                        </div>
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
+
+

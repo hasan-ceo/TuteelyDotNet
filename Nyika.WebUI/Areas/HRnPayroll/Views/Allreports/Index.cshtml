@@ -1,0 +1,153 @@
+﻿@model Nyika.WebUI.Areas.HRnPayroll.Models.ReportViewModelH
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/HRnPayroll/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="card text-white bg-dark p-md-0 mx-0 my-0" style="min-height:540px">
+    <div class="card-header bg-dark">
+
+
+        <div class="row">
+            <div class="col-md-6">
+                <h4>Reports</h4>
+            </div>
+            <div class="col-md-6 text-right">
+                <div class="form-actions no-color">
+                    <input type="submit" value="Process Attendance" class="btn btn-default" data-toggle="modal" data-target="#ProcessAttendanceModal" />
+                    <input type="submit" value="Process Salary" class="btn btn-default" data-toggle="modal" data-target="#ProcessSalaryModal" />
+                    <H3 class="text-light"> @TempData["ProcessComplete"] </H3>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="card-body p-md-1">
+        @using (Html.BeginForm("Export", "Allreports"))
+        {
+            @Html.AntiForgeryToken()
+            <div class="row m-md-1">
+                <div class="col-md-3">
+                    <div class="form-horizontal m-md-1">
+
+                        <div class="form-group p-md-0 m-md-0">
+                            @Html.LabelFor(model => model.FromDate, "From Date", htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                            <div class="col-md-12 p-md-0 m-md-0">
+                                @Html.EditorFor(model => model.FromDate, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+
+                        <div class="form-group p-md-0 m-md-0">
+                            @Html.LabelFor(model => model.TillDate, "Till Date", htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                            <div class="col-md-12 p-md-0 m-md-0">
+                                @Html.EditorFor(model => model.TillDate, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                        </div>
+
+
+                        <div class="form-group p-md-0 m-md-0">
+                            @Html.LabelFor(model => model.EmployeeID, "Employee PIN", htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                            <div class="col-md-12 p-md-0 m-md-0">
+                                @Html.DropDownList("EmployeeID", null, htmlAttributes: new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-horizontal m-md-1">
+                        <input type="submit" value="Employee List" class="btn btn-default btn-block m-md-1" name="BtnAll" />
+                        <input type="submit" value="New Join" class="btn btn-default btn-block m-md-1" name="BtnAll" />
+                        <input type="submit" value="Resign List" class="btn btn-default  btn-block m-md-1" name="BtnAll" />
+
+                        @*<input type="submit" value="Evaluation" class="btn btn-default btn-block m-md-1" name="BtnAll" />
+                            <input type="submit" value="Employee Summary" class="btn btn-default btn-block m-md-1" name="BtnAll" />*@
+
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-horizontal m-md-1">
+                        <input type="submit" value="Daily Attendance" class="btn btn-default btn-block m-md-1" name="BtnAll" />
+                        <input type="submit" value="Time Card" class="btn btn-default btn-block m-md-1" name="BtnAll" />
+                        <input type="submit" value="Time Card All" class="btn btn-default btn-block m-md-1" name="BtnAll" />
+                        <input type="submit" value="Attendance Summary" class="btn btn-default btn-block m-md-1" name="BtnAll" />
+                        @*<input type="submit" value="Shift Register" class="btn btn-default btn-block m-md-1" name="BtnAll" />*@
+                        <input type="submit" value="Attendance Register" class="btn btn-default btn-block m-md-1" name="BtnAll" />
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-horizontal m-md-1">
+                        <input type="submit" value="Salary Sheet" class="btn btn-default btn-block m-md-1" name="BtnAll" />
+                        <input type="submit" value="Payslip" class="btn btn-default btn-block m-md-1" name="BtnAll" />
+                        <input type="submit" value="Payslip All" class="btn btn-default btn-block m-md-1" name="BtnAll" />
+                        <input type="submit" value="SDL + TAX Paye Sheet" class="btn btn-default btn-block m-md-1" name="BtnAll" />
+                        <input type="submit" value="PPF Sheet" class="btn btn-default btn-block m-md-1" name="BtnAll" />
+                        <input type="submit" value="NSSF Sheet" class="btn btn-default btn-block m-md-1" name="BtnAll" />
+                        <input type="submit" value="NHIF Sheet" class="btn btn-default btn-block m-md-1" name="BtnAll" />
+                        <input type="submit" value="HESLB Sheet" class="btn btn-default btn-block m-md-1" name="BtnAll" />
+                        <input type="submit" value="WCF Sheet" class="btn btn-default btn-block m-md-1" name="BtnAll" />
+                        <input type="submit" value="Bank Sheet" class="btn btn-default btn-block m-md-1" name="BtnAll" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="ProcessAttendanceModal" tabindex="-1" role="dialog" aria-labelledby="ProcessAttendanceModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ProcessAttendanceModalLabel">Process Attendance</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to process attendance?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                @using (Html.BeginForm("ProcessAttendance", "Allreports", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <input type="submit" value="Process Attendance" class="btn btn-danger" />
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="ProcessSalaryModal" tabindex="-1" role="dialog" aria-labelledby="ProcessSalaryModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ProcessSalaryModalLabel">Process Salary</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to process salary?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                @using (Html.BeginForm("ProcessSalary", "Allreports", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <input type="submit" value="Process Salary" class="btn btn-danger" name="BtnAll" />
+                    @*<button type="button" class="btn btn-danger" data->Business Day Close</button>*@
+                }
+            </div>
+        </div>
+    </div>
+</div>

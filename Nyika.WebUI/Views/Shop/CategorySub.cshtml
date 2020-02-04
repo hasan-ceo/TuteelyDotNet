@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Nyika.WebUI.Models.CategorySubVM>
+
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_LayoutShop.cshtml";
+}
+
+
+@foreach (var item in Model)
+{
+    <div class="col-md-3 p-1">
+        <a href="@Url.Content(item.UrlLink)" class="btn btn-light btn-block ">
+            <img src="@Url.Content(item.LogoUrl)?@DateTime.Now.ToFileTime())" alt="Nyika logo" class="img-fluid" />
+            @item.CategoryName
+        </a>
+    </div>
+
+}
+
+@*<div class="card-columns">
+    @foreach (var item in Model)
+    {
+        <div class="card bg-light m-1">
+            <div class="card-body text-center p-1">
+                <a href="@item.UrlLink" class="btn btn-light btn-sm">@item.CategoryName</a>
+               
+            </div>
+        </div>
+    }
+</div>*@

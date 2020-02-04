@@ -1,0 +1,92 @@
+﻿@model IEnumerable<Nyika.Domain.Entities.Accounts.CashRequisition>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Accounts/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card text-white bg-dark p-md-0 mx-0 my-0" style="min-height:540px">
+    <div class="card-header bg-dark">
+        <div class="row">
+            <div class="col-md-7">
+                <h4>Cash Requisition List</h4>
+            </div>
+            <div class="col-md-5 text-right">
+
+                @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-secondary mx-md-2" })
+            </div>
+
+        </div>
+
+
+    </div>
+    <div class="card-body p-md-3 b-0 m-md-0 text-dark">
+        <table class="table table-responsive-md table-sm table-secondary table-hover table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EntryBy)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Particulars)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Amount)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Approved)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ApprovedBy)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.WorkDate)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EntryBy)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Particulars)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Amount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Approved)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ApprovedBy)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.WorkDate)
+                    </td>
+
+
+                    <td class="text-right">
+                        <div class="btn-group text-white m-md-0 p-md-0">
+                            @if (item.Approved == false)
+                            {
+                                using (Html.BeginForm("Approve", "CashRequisitions", FormMethod.Post))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <input type="hidden" name="CashRequisitionID" id="CashRequisitionID" value="@item.CashRequisitionID">
+                                    @*<input type="submit" value="Approve" class="btn btn-default btn-block m-md-1" name="BtnAll" data-toggle="tooltip" data-placement="top" />*@
+                                    <button class="btn btn-default" type="submit" data-toggle="tooltip" data-placement="top">
+                                        <strong>A</strong>
+                                    </button>
+                                }
+                            }
+                        </div>
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>

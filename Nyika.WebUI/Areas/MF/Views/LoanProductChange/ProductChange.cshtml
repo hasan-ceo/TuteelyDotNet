@@ -1,0 +1,108 @@
+﻿@using Mvc.CascadeDropDown
+@model Nyika.WebUI.Areas.MF.Models.ProductChangeVM
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/MF/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="card text-white bg-dark p-md-0 mx-0 my-0" style="min-height:540px">
+        <div class="card-header bg-dark">
+            <div class="row">
+                <div class="col-md-4">
+                    <h4>Product Change</h4>
+                </div>
+                <div class="col-md-8 text-right">
+                    <div class="btn-group btn-group-justified">
+                        <input type="submit" value="Save" class="btn btn-secondary mx-md-1" />
+                        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+        <div class="card-body p-md-3 b-0 m-md-0">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h4 class="text-danger">@Model.Particulars</h4>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+
+
+                    <div class="form-group p-md-0 m-md-0">
+                        @Html.LabelFor(model => model.SelectedProject, "Project", htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                        <div class="col-md-12 p-md-0 m-md-0">
+                            @Html.DropDownListFor(p => p.SelectedProject, Model.Project, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.SelectedProject, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group p-md-0 m-md-0">
+                        @Html.LabelFor(model => model.SelectedGroup, "Group", htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                        <div class="col-md-12 p-md-0 m-md-0">
+                            @Html.CascadingDropDownListFor(expression: m => m.SelectedGroup,
+                     triggeredByProperty: m => m.SelectedProject,
+                     url: Url.Action("GetGroups", "Groups"),
+                     ajaxActionParamName: "ProjectID",
+                     disabledWhenParentNotSelected: true,
+                     htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.SelectedGroup)
+                        </div>
+                    </div>
+
+                    <div class="form-group p-md-0 m-md-0">
+                        @Html.LabelFor(model => model.SelectedMember, "Member", htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                        <div class="col-md-12 p-md-0 m-md-0">
+                            @Html.CascadingDropDownListFor(expression: m => m.SelectedMember,
+                     triggeredByProperty: m => m.SelectedGroup,
+                     url: Url.Action("GetMemberScurity", "Members"),
+                     ajaxActionParamName: "GroupsID",
+                     disabledWhenParentNotSelected: true,
+                     htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.SelectedMember)
+                        </div>
+                    </div>
+
+                    <div class="form-group p-md-0 m-md-0">
+                        @Html.LabelFor(model => model.SelectedLoan, "Loan", htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                        <div class="col-md-12 p-md-0 m-md-0">
+                            @Html.CascadingDropDownListFor(expression: m => m.SelectedLoan,
+                     triggeredByProperty: m => m.SelectedMember,
+                     url: Url.Action("GetLoanActive", "Loans"),
+                     ajaxActionParamName: "MemberID",
+                     disabledWhenParentNotSelected: true,
+                     htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.SelectedMember)
+                        </div>
+                    </div>
+
+                    <div class="form-group p-md-0 m-md-0">
+                        @Html.LabelFor(model => model.SelectedProduct, "Product", htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                        <div class="col-md-12 p-md-0 m-md-0">
+                            @Html.DropDownList("SelectedProduct", Model.Product, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.SelectedProduct, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            
+        </div>
+    </div>
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

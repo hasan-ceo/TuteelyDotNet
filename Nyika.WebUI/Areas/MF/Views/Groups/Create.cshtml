@@ -1,0 +1,138 @@
+﻿@model Nyika.Domain.Entities.MF.Groups
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/MF/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="card text-white bg-dark p-md-0 mx-0 my-0" style="min-height:540px">
+        <div class="card-header bg-dark">
+            <div class="row">
+                <div class="col-md-4">
+                    <h4>Create Group</h4>
+                </div>
+                <div class="col-md-8 text-right">
+                    <div class="btn-group btn-group-justified">
+                        <input type="submit" value="Save" class="btn btn-secondary mx-md-1" />
+                        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+        <div class="card-body p-md-3 b-0 m-md-0">
+
+
+            <div class="row">
+                <div class="col-md-4">
+
+
+                    <div class="form-group p-md-0 m-md-0">
+                        @Html.LabelFor(model => model.ProjectID, "Project", htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                        <div class="col-md-12 p-md-0 m-md-0">
+                            @Html.DropDownList("ProjectID", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ProjectID, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group p-md-0 m-md-0">
+                        @Html.LabelFor(model => model.GroupsName, htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                        <div class="col-md-12 p-md-0 m-md-0">
+                            @Html.EditorFor(model => model.GroupsName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.GroupsName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group p-md-0 m-md-0">
+                        @Html.LabelFor(model => model.Gender, htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                        <div class="col-md-12 p-md-0 m-md-0">
+                            @Html.DropDownList("Gender", new SelectList(new[] { "Female", "Male" }), htmlAttributes: new { @class = "form-control" })
+                            @* @Html.EditorFor(model => model.Gender, new { htmlAttributes = new { @class = "form-control" } })*@
+                            @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    <div class="form-group p-md-0 m-md-0">
+                        @Html.LabelFor(model => model.EmployeeIdFC, "Founder Collection Officer", htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                        <div class="col-md-12 p-md-0 m-md-0">
+                            @Html.DropDownList("EmployeeIdFC", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.EmployeeIdFC, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group p-md-0 m-md-0">
+                        @Html.LabelFor(model => model.EmployeeIdCC, "Current Collection Officer", htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                        <div class="col-md-12 p-md-0 m-md-0">
+                            @Html.DropDownList("EmployeeIdCC", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.EmployeeIdCC, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="col-md-4">
+
+
+                    <div class="form-group p-md-0 m-md-0">
+                        @Html.LabelFor(model => model.CreateDate, htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                        <div class="col-md-12 p-md-0 m-md-0">
+                            @Html.EditorFor(model => model.CreateDate, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.CreateDate, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group p-md-0 m-md-0">
+                        @Html.LabelFor(model => model.ColDay, htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                        <div class="col-md-12 p-md-0 m-md-0">
+                            @* @Html.DropDownListFor(model => model.ColDay, EnumHelper.GetSelectList(typeof(Nyika.Domain.Entities.Setup.Weekdays)), "-- Choose --", new { @class = "postfix", @required = "required" })*@
+                            @Html.EnumDropDownListFor(model => model.ColDay, "-- Choose --", htmlAttributes: new { @class = "form-control" })
+                            @*@Html.EditorFor(model => model.ColDay, new { htmlAttributes = new { @class = "form-control" } })*@
+                            @Html.ValidationMessageFor(model => model.ColDay, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    <div class="form-group p-md-0 m-md-0">
+                        @Html.LabelFor(model => model.ColStartDate, htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                        <div class="col-md-12 p-md-0 m-md-0">
+                            @Html.EditorFor(model => model.ColStartDate, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ColStartDate, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group p-md-0 m-md-0">
+                        @Html.LabelFor(model => model.Frequency, htmlAttributes: new { @class = "control-label col-md-12 p-md-0 m-md-0" })
+                        <div class="col-md-12 p-md-0 m-md-0">
+                            @Html.DropDownList("Frequency", new SelectList(new[] { "Weekly", "Monthly" }), htmlAttributes: new { @class = "form-control" })
+                            @*@Html.EditorFor(model => model.Frequency, new { htmlAttributes = new { @class = "form-control" } })*@
+                            @Html.ValidationMessageFor(model => model.Frequency, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>@ViewBag.Msg</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

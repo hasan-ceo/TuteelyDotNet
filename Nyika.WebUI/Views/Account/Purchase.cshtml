@@ -1,0 +1,139 @@
+﻿@model Nyika.WebUI.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+
+<div class="row">
+    <div class="offset-md-2 col-md-4">
+        <div class="card border-0 py-md-4">
+
+            <div class="card-body text-center">
+                <h1>
+                    Let's get started
+                </h1>
+                <h6 class="text-info">
+                    <span class="text-center align-middle">or </span><a class="btn btn-link p-0 m-0" href="/Register" id="registerLink"> Free 14 day trial. No credit card required.</a>
+                </h6>
+
+                @using (Html.BeginForm("PurchaseConfirm", "Account", FormMethod.Post))
+                {
+
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+                    @Html.HiddenFor(m => m.SubId)
+                    <div class="form-inline p-md-2">
+                        <div class="col-md-12">
+                            @Html.TextBoxFor(m => m.CompanyName, new { @class = "form-control-lg", @placeholder = "Your Company Name" })
+                        </div>
+                    </div>
+
+                    <div class="form-inline p-md-2">
+                        <div class="col-md-12">
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control-lg", @placeholder = "Email" })
+                        </div>
+                    </div>
+                    <div class="form-inline p-md-2">
+                        <div class="col-md-12">
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control-lg", @placeholder = "Password, ex:Abc123$" })
+                        </div>
+                    </div>
+                    <div class="form-inline p-md-2">
+                        <div class="col-md-12">
+                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control-lg", @placeholder = "Confirm Password" })
+                        </div>
+                    </div>
+                    <div class="form-inline p-md-2">
+                        <div class="col-md-12">
+                            <input type="submit" class="btn btn-success btn-lg btn-block" value="Purchase" style="display:inline-block" />
+                            <div class="py-md-2" style="text-align: center;color: #97a2ae;font-size: 13px;font-weight: 400;">
+                                By clicking "Purchase" you agree to the Nyika <a href="~/en/Terms-n-Condition">Terms</a> and <a href="~/en/Privacy-Policy">Privacy Policy</a>.
+                            </div>
+                        </div>
+                    </div>
+                }
+
+               
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        @if (Model.SubId == 1)
+        {
+            <div class="card my-md-5">
+                <div class="card-header bg-secondary">
+                    <h1 class="card-title"><strong class="text-white">You select - Small</strong></h1>
+                </div>
+                <div class="card-body h-100">
+                    <div class="d-md-inline-block">
+                        <h1 class="display-3 p-md-0 m-md-0"><strong class="text-warning">$60</strong></h1>
+                    </div>
+                    <div class="d-md-inline-block">
+                        <p class="card-text my-md-2">/ Month</p>
+                    </div>
+                    <p class="card-text my-md-2">Good for Start-up</p>
+                </div>
+            </div>
+        }
+        else if (Model.SubId == 2)
+        {
+            <div class="card my-md-5">
+                <div class="card-header bg-secondary">
+                    <h1 class="card-title"><strong class="text-white">You select - Medium</strong></h1>
+                </div>
+                <div class="card-body h-100">
+                    <div class="d-md-inline-block">
+                        <h1 class="p-md-0 m-md-0"><strong class="text-warning">Total Bill : $600</strong></h1>
+                    </div>
+                    <div class="d-md-inline-block">
+                        <p class="card-text my-md-2">/ Year</p>                        
+                    </div>
+                    <p class="card-text my-md-2">You save <strong>$120/-</strong> when billed annually</p>
+                </div>
+            </div>
+
+          
+        }
+    </div>
+</div>
+
+<div class="row">
+    <div class="offset-md-2 col-md-8">
+        <hr />
+        <p class="text-left my-md-4">
+            <strong>Help:</strong>
+            <br />
+            <strong>
+                Q. What happed if I open an account with non-existing email address like abc@nothing.xyz?
+            </strong>
+            <br />
+            A. You can open an account and you can use our application without any problem, except if you forget your password and you want to reset it, in that case you cannot receive any reset link at your non-existing email account. To resolve the issue you have to contact with us.
+            <br />
+            <strong class="text-danger">Avoid unnecessary hassle please use valid email address where you can receive reset link from us.</strong>
+            <br />
+            <br />
+            <strong>
+                Q. What should I need to know about password?
+            </strong>
+            <br />
+            A. Please remember passwords must have
+            at least 6 character long,
+            at least one special character ('!','$'),
+            at least one Digit ('0'-'9'),
+            at least one lowercase character ('a'-'z'),
+            at least one uppercase character ('A'-'Z')
+            <br />
+            <strong>Example: Abc123$</strong>
+        </p>
+    </div>
+</div>
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+

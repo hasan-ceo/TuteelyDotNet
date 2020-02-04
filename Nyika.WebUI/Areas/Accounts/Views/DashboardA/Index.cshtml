@@ -1,0 +1,181 @@
+﻿@model Nyika.WebUI.Models.DashboardVM
+
+@{
+    ViewBag.Title = "Accounts - Dashboard";
+    Layout = "~/Areas/Accounts/Views/Shared/_Layout.cshtml";
+}
+
+@*<div class="jumbotron">
+    <h1>Accounting</h1>
+    <p class="lead">All under one roof</p>
+    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+</div>*@
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card text-white bg-dark p-md-0 mx-0 my-0" style="min-height:540px">
+            <div class="card-header bg-dark">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4>Current Business Date : @Model.WorkDate</h4>
+                    </div>
+                    <div class="col-md-6 text-right">
+
+                        <div class="form-actions no-color">
+                           @* <input type="submit" value="Month Close" class="btn btn-default" data-toggle="modal" data-target="#MonthCloseModal" />*@
+                            @if (Model.DayClose==false)
+                            { 
+                                <input type="submit" value="Business Day Close" class="btn btn-default" data-toggle="modal" data-target="#DayCloseModal" />
+                            }
+                            else
+                            {
+                                <input type="submit" value="Business Day Open" class="btn btn-default" data-toggle="modal" data-target="#DayOpenModal" />
+                            }
+                        </div>
+                        
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="card-body p-md-3 b-0 m-md-0 text-dark">
+                <table class="table table-responsive-md table-sm table-secondary table-hover table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>
+                               Sub Head ID
+                            </th>
+                            <th>
+                               Sub Head Name
+                            </th>
+                            <th>
+                                Bank Name
+                            </th>
+                            <th class="text-right">
+                                Balance
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.CashSummary)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.AccountSubHeadID)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.AccountSubHeadName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.BankName)
+                                </td>
+                                <td class="text-right">
+                                    @Html.DisplayFor(modelItem => item.Balance)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card-footer">
+                @using (Html.BeginForm("CashUpdate", "DashboardA", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Cash Update" class="btn btn-default" name="BtnAll" />
+                        <label class="text-danger">Click to update current cash position</label>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="MonthCloseModal" tabindex="-1" role="dialog" aria-labelledby="MonthCloseModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="MonthCloseModalLabel">Month Close</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @*@{
+                    var t = @ViewBag.WorkDate;
+                    
+                }*@
+                Are you sure you want to close Previous Month?
+            </div>
+            <div class="modal-footer">
+                
+                @using (Html.BeginForm("MonthClose", "DashboardA", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <input type="submit" value="Month Close" class="btn btn-danger" name="BtnAll" />
+                    @*<button type="button" class="btn btn-danger" data->Business Day Close</button>*@
+                }
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="DayCloseModal" tabindex="-1" role="dialog" aria-labelledby="DayCloseModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="DayCloseModalLabel">Business Day Close</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to close current business day?
+            </div>
+            <div class="modal-footer">
+                
+                @using (Html.BeginForm("BusinessDayClose", "DashboardA", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <input type="submit" value="Business Day Close" class="btn btn-danger" name="BtnAll"/>
+                    @*<button type="button" class="btn btn-danger" data->Business Day Close</button>*@
+                }
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="DayOpenModal" tabindex="-1" role="dialog" aria-labelledby="DayOpenModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="DayOpenModalLabel">Business Day Open</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to open new business day?
+            </div>
+            <div class="modal-footer">
+               
+                @using (Html.BeginForm("BusinessDayOpen", "DashboardA", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <input type="submit" value="Business Day Open" class="btn btn-success" name="BtnAll" />
+                    @*<button type="button" class="btn btn-danger" data->Business Day Close</button>*@
+                }
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

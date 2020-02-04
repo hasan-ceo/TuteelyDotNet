@@ -1,0 +1,97 @@
+﻿@model Nyika.WebUI.Models.ShopBag
+
+@{
+    ViewBag.Title = "";
+    Layout = "~/Views/Shared/_LayoutShop.cshtml";
+}
+
+
+
+<div class="container">
+
+
+    <h2 class="display-4 w-100 text-center my-3">@Nyika.WebUI.LanguageResources.Global.YourBag</h2>
+    <table class="table table-responsive-sm table-sm table-light table-hover">
+        <thead>
+            <tr>
+
+                <th class="text-left">@Nyika.WebUI.LanguageResources.Global.Item</th>
+                @*<th class="text-center">Type</th>
+                    <th class="text-center">Color</th>
+                    <th class="text-center">Size</th>*@
+                <th class="text-center">@Nyika.WebUI.LanguageResources.Global.Quantity</th>
+                <th class="text-right">@Nyika.WebUI.LanguageResources.Global.Price</th>
+                <th class="text-right">@Nyika.WebUI.LanguageResources.Global.Subtotal</th>
+                <th class="text-center"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var line in Model.Lines)
+        {
+                <tr>
+
+                    <td class="text-left"> @if (ViewBag.selectedlanguage == "bn")
+                    {
+                        @line.Item.ItemNameLocal
+                    }
+                    else
+                    {
+                        @line.Item.ItemName
+                    }
+                    </td>
+                    @*<td class="text-center">@line.ItemType</td>
+                        <td class="text-center">@line.Item.Color</td>
+                        <td class="text-center">@line.Item.Size</td>*@
+                    <td class="text-center">
+                        <div class="btn-group align-content-center" role="group">
+                            @using (Html.BeginForm("IncreaseItem", "ShopBag"))
+                        {
+                                @Html.Hidden("ItemID", line.Item.ItemID)
+
+                                <input class="btn btn-sm btn-warning"
+                                       type="submit" value="+" />
+                        }
+                            <p class="btn btn-light btn-sm"><strong> @line.Quantity </strong></p>
+                            @using (Html.BeginForm("DecreaseItem", "ShopBag"))
+                        {
+                                @Html.Hidden("ItemID", line.Item.ItemID)
+
+                                <input class="btn btn-sm btn-warning"
+                                       type="submit" value="-" />
+                        }
+                        </div>
+
+                    </td>
+                    <td class="text-right">৳ @line.Item.NewPrice</td>
+                    <td class="text-right">৳ 
+                        @((line.Quantity * line.Item.NewPrice))
+                    </td>
+                    <td>
+                        @using (Html.BeginForm("RemoveFromBag", "ShopBag"))
+                    {
+                            @Html.Hidden("ItemID", line.Item.ItemID)
+                            <button class="btn btn-sm btn-link">
+                                <img src="~/Images/svg/x.svg" alt="Bag" class="img-fluid" />
+                            </button>
+                    }
+                    </td>
+                </tr>
+        }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3" class="text-right"><strong>@Nyika.WebUI.LanguageResources.Global.Total:</strong></td>
+                <td class="text-right">
+                    ৳ @Model.ComputeTotalValue()
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <div class="text-center">
+        <a class="btn btn-warning" href="~/">@Nyika.WebUI.LanguageResources.Global.Continueshopping</a>
+        <a class="btn btn-primary" href="~/ShopBag/Checkout">@Nyika.WebUI.LanguageResources.Global.Checkout</a>
+        @*@Html.ActionLink(@Nyika.WebUI.LanguageResources.Global.Checkout, "Checkout", "ShopBag", null, new { @class = "btn btn-Success" })*@
+    </div>
+
+</div>

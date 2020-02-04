@@ -1,0 +1,65 @@
+﻿@model Nyika.WebUI.Models.LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<div class="row">
+    <div class="offset-md-2 col-md-8">
+        <div class="card border-0 py-md-4">
+            <div class="card-body text-center">
+                <h1>
+                    Login
+                </h1>
+
+
+                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+
+                    <div class="form-inline p-md-2">
+
+                        <div class="col-md-12">
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control-lg", @placeholder = "Email" })
+                        </div>
+                    </div>
+                    <div class="form-inline p-md-2">
+
+                        <div class="col-md-12">
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control-lg", @placeholder = "Password" })
+                        </div>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            @Html.CheckBoxFor(m => m.RememberMe, new { @class = "form-check-input" })
+
+                            Remember Me
+                        </label>
+                    </div>
+
+                    <div class="form-inline p-md-2">
+                        <div class="col-md-12">
+                            <input type="submit" class="btn btn-dark btn-lg btn-block" value="Login" style="display:inline-block"/>
+                            @Html.ActionLink("Forgot your password?", "ForgotPassword", null, new { @class = "btn btn-link  btn-md btn-block" })
+
+                        </div>
+                    </div>
+                }
+
+
+
+
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

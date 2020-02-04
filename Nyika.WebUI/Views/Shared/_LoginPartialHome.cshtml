@@ -1,0 +1,32 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+
+    <form id="logoutForm" class="navbar-right" method="post" action="/Account/LogOff">
+
+        @Html.AntiForgeryToken()
+
+        <ul class="nav navbar-nav navbar-right">
+
+            <li> <a class="btn btn-outline-secondary mx-md-1 my-md-0 btn-block" href="~/dashboard/Index">Dashboard</a></li>
+            <li> <a class="btn btn-outline-dark mx-md-1 my-md-0 btn-block" href="~/Contact">Contact</a></li>
+            <li> <a class="btn btn-success mx-md-1 my-md-0 btn-block" href="/Manage/ChangePassword" title="Manage">Hello @User.Identity.GetUserName()!</a></li>
+            <li> <a class="btn btn-outline-dark mx-md-1 my-md-0 btn-block" href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        </ul>
+    </form>
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li> <a class="btn btn-link mx-md-1 my-md-0 text-dark" href="tel:+256754874070" style="text-decoration:none"><strong>Let's Chat</strong> +256754874070</a></li>
+        <li> <a class="btn btn-outline-dark mx-md-1 my-md-0 btn-block" href="~/">Home</a></li>
+        <li> <a class="btn btn-outline-dark mx-md-1 my-md-0 btn-block" href="~/About">About</a></li>
+        <li> <a class="btn btn-outline-dark mx-md-1 my-md-0 btn-block" href="~/Contact">Contact</a></li>
+        <li>@Html.ActionLink("Start For Free", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "btn btn-success mx-md-1 my-md-0 btn-block" })</li>
+        <li>@Html.ActionLink("Login", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "btn btn-outline-dark mx-md-1 my-md-0 btn-block" })</li>
+    </ul>
+}
+
+
+
+

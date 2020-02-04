@@ -1,0 +1,24 @@
+﻿@model Nyika.WebUI.Models.SubscriptionVM
+@{
+    ViewBag.Title = "Payment Success";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+<div class="container">
+    <div class="row">
+        <div class="offset-md-2 col-md-8 text-center p-md-5">
+            <h1>Payment Success Confirmation</h1>
+            <div class="p-md-3">
+                Thank you for subscribe our service.
+                <hr />
+                <p>@Model.PayerName</p>
+                <p>Subscription Type : @Model.SubscriptionType</p>
+                <p>Amount Receive : @Model.Amount</p>
+                <hr />
+            </div>
+
+            <div class="alert alert-danger" role="alert"><h2>Please try to login after some times. If you cannot login even after 30 minutes please feel free to contact with us.</h2></div>
+
+            <div class="p-md-3">It will be nice if you inform how can we make our service better for you or if you need any customization please feel free to <br /> <br /><a href="~/contact" class="btn btn-info btn-lg">contact us</a></div>
+        </div>
+    </div>
+</div>

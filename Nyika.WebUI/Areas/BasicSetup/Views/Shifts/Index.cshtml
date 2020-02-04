@@ -1,0 +1,105 @@
+﻿@model IEnumerable<Nyika.Domain.Entities.Setup.Shift>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/BasicSetup/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card text-white bg-dark p-md-0 mx-0 my-0" style="min-height:540px">
+    <div class="card-header bg-dark">
+        <div class="row">
+            <div class="col-md-6">
+                <h4>Shift List</h4>
+            </div>
+            <div class="col-md-6 text-right">
+                @Html.ActionLink("Create New", "Create",null,new { @class= "btn btn-secondary" })
+            </div>
+        </div>
+        
+        
+    </div>
+    <div class="card-body p-md-3 b-0 m-md-0 text-dark">
+        <table class="table table-responsive-md table-sm table-secondary table-hover table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>
+                        @Html.DisplayName("Name")
+                    </th>
+                    <th>
+                        @Html.DisplayName("In")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Out")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Absent")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Late")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Early")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Lunch From")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Lunch Till")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Last Punch")
+                    </th>
+                    <th>
+                        @Html.DisplayName("Default Shift")
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ShiftName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ShiftIn)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ShiftOut)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ShiftAbsent)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ShiftLate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ShiftEarly)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ShiftLunchFrom)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ShiftLunchTill)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ShiftLastPunch)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DefaultShift)
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group text-white m-md-0 p-md-0">
+
+                            <a class="btn btn-secondary" href="@Url.Action("Edit", "Shifts", new { id = item.ShiftID })" data-toggle="tooltip" data-placement="top" title="Edit"><strong>i</strong></a>
+                            <a class="btn btn-danger" href="@Url.Action("Delete", "Shifts", new { id = item.ShiftID })" data-toggle="tooltip" data-placement="top" title="Delete"><strong>X</strong></a>
+                        </div>
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
+
+

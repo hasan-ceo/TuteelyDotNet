@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="jumbotron">
+            <h1>
+                @ViewBag.DetailError
+            </h1>
+            <h1>Oops! Something went wrong.</h1>
+            <h3>
+                If you consistently get this error, please logout and login again!
+            </h3>
+            <h4>Sorry for the inconvenience.</h4>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <strong>Also check : -</strong>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Invalid email and password</li>
+                <li class="list-group-item">Wrong URL</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,54 @@
+﻿@model Nyika.WebUI.Models.CatListVM
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_LayoutShop.cshtml";
+}
+
+<div class="card text-center border-0 p-0 m-0">
+    <img src="@Url.Content(Model.HeaderUrl)?@DateTime.Now.ToFileTime())" alt="@Model.CategoryName" class="card-img-top" />
+    <div class="card-body p-0 m-0">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="~/"><img src="~/images/svg/home.svg" alt="home" style="width:30px"></a></li>
+                <li class="breadcrumb-item active" aria-current="page">@Model.CategoryName</li>
+            </ol>
+        </nav>
+    </div>
+    
+</div>
+
+@*<div class="card-deck justify-content-center">
+    @foreach (var item in Model.categorySubVM)
+    {
+        <a href="@Url.Content(item.UrlLink)" class="btn btn-light btn-block ">
+            <div class="card">
+                <div class="card-body">
+                    <img src="@Url.Content(item.LogoUrl)?@DateTime.Now.ToFileTime())" alt="Nyika logo" class="img-fluid" />
+                    <h5 class="card-title">@item.CategoryName</h5>
+                </div>
+            </div>
+
+        </a>
+    }
+
+</div>*@
+
+
+<div class="row p-0 m-0 justify-content-center">
+    @foreach (var item in Model.categorySubVM)
+    {
+        <div class="col-md-3 p-1">
+            <a href="@Url.Content(item.UrlLink)" class="btn btn-light btn-block h-100">
+                <div class="d-inline p-0"><img src="@Url.Content(item.LogoUrl)?@DateTime.Now.ToFileTime())" alt="Nyika logo" style="width:50px" /></div>
+                <div class="d-inline p-0" style="width:100%;white-space:normal">@item.CategoryName</div>         
+            </a>
+        </div>
+
+    }
+
+</div>
+
+
+
+
+

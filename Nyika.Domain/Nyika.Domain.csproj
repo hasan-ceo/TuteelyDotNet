@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DD7B9CA5-C406-4ACC-87F6-E8F5FA9FE404}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Nyika.Domain</RootNamespace>
+    <AssemblyName>Nyika.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Abstract\Accounts\IAccountSubHeadRepo.cs" />
+    <Compile Include="Abstract\Accounts\IAccountMainHeadRepo.cs" />
+    <Compile Include="Abstract\Accounts\IAccountTypeRepo.cs" />
+    <Compile Include="Abstract\Accounts\IAccountGLRepo.cs" />
+    <Compile Include="Abstract\Accounts\ICashSummaryRepo.cs" />
+    <Compile Include="Abstract\Accounts\ICashRequisitionRepo.cs" />
+    <Compile Include="Abstract\Accounts\IPartyRepo.cs" />
+    <Compile Include="Abstract\Accounts\IBankRepo.cs" />
+    <Compile Include="Abstract\Accounts\IBusinessDayRepo.cs" />
+    <Compile Include="Abstract\AVL\IFeedbackRepo.cs" />
+    <Compile Include="Abstract\AVL\IPaypalIPNRepo.cs" />
+    <Compile Include="Abstract\AVL\IPageRepo.cs" />
+    <Compile Include="Abstract\HR\IEmployeeIncrementRepo.cs" />
+    <Compile Include="Abstract\HR\IEmployeePayrollRepo.cs" />
+    <Compile Include="Abstract\HR\IEmployeeAllDedRepo.cs" />
+    <Compile Include="Abstract\HR\IEmployeeTourRepo.cs" />
+    <Compile Include="Abstract\HR\IEmployeeShiftRepo.cs" />
+    <Compile Include="Abstract\HR\IEmployeeResignRepo.cs" />
+    <Compile Include="Abstract\HR\IEmployeeLeaveRepo.cs" />
+    <Compile Include="Abstract\HR\IEmployeeRepo.cs" />
+    <Compile Include="Abstract\HR\IEmployeeAttendanceRepo.cs" />
+    <Compile Include="Abstract\HR\IEmployeeShowcauseRepo.cs" />
+    <Compile Include="Abstract\HR\IEmployeeTransferRepo.cs" />
+    <Compile Include="Abstract\Invoices\IInvoiceDetailsRepo.cs" />
+    <Compile Include="Abstract\Invoices\IInvoiceRepo.cs" />
+    <Compile Include="Abstract\MF\IGroupsRepo.cs" />
+    <Compile Include="Abstract\MF\ILoanCollectionRepo.cs" />
+    <Compile Include="Abstract\MF\ILoanRepo.cs" />
+    <Compile Include="Abstract\MF\IProductRepo.cs" />
+    <Compile Include="Abstract\MF\ILoanCycleRepo.cs" />
+    <Compile Include="Abstract\MF\IMemberRepo.cs" />
+    <Compile Include="Abstract\MF\ILoanScheduleRepo.cs" />
+    <Compile Include="Abstract\MF\ISchemeRepo.cs" />
+    <Compile Include="Abstract\MF\IProjectRepo.cs" />
+    <Compile Include="Abstract\Setup\IAttenStatusRepo.cs" />
+    <Compile Include="Abstract\Setup\IAllDedRepo.cs" />
+    <Compile Include="Abstract\Setup\IDepartmentRepo.cs" />
+    <Compile Include="Abstract\Setup\ICompanyRepo.cs" />
+    <Compile Include="Abstract\Setup\IDesignationRepo.cs" />
+    <Compile Include="Abstract\Setup\IEducationRepo.cs" />
+    <Compile Include="Abstract\Setup\IErrorLogRepo.cs" />
+    <Compile Include="Abstract\Setup\IShopPageRepo.cs" />
+    <Compile Include="Abstract\Setup\ISectionRepo.cs" />
+    <Compile Include="Abstract\Setup\IHolidayRepo.cs" />
+    <Compile Include="Abstract\Setup\ILeaveRepo.cs" />
+    <Compile Include="Abstract\Setup\IResignReasonRepo.cs" />
+    <Compile Include="Abstract\Setup\IShiftRepo.cs" />
+    <Compile Include="Abstract\Setup\IEmploymentTypeRepo.cs" />
+    <Compile Include="Abstract\Stock\IItemRepo.cs" />
+    <Compile Include="Abstract\Stock\ICategorySubRepo.cs" />
+    <Compile Include="Abstract\Stock\ICategoryRepo.cs" />
+    <Compile Include="Abstract\Stock\IBrandRepo.cs" />
+    <Compile Include="Concrete\Accounts\EFAccountSubHeadRepo.cs" />
+    <Compile Include="Concrete\Accounts\EFAccountMainHeadRepo.cs" />
+    <Compile Include="Concrete\Accounts\EFAccountTypeRepo.cs" />
+    <Compile Include="Concrete\Accounts\EFAccountGLRepo.cs" />
+    <Compile Include="Concrete\Accounts\EFCashRequisitionRepo.cs" />
+    <Compile Include="Concrete\Accounts\EFCashSummaryRepo.cs" />
+    <Compile Include="Concrete\Accounts\EFPartyRepo.cs" />
+    <Compile Include="Concrete\Accounts\EFBankRepo.cs" />
+    <Compile Include="Concrete\Accounts\EFBusinessDayRepo.cs" />
+    <Compile Include="Concrete\AVL\EFFeedBackRepo.cs" />
+    <Compile Include="Concrete\AVL\EFPaypalIPNRepo.cs" />
+    <Compile Include="Concrete\AVL\EFPageRepo.cs" />
+    <Compile Include="Concrete\EFDbContext.cs" />
+    <Compile Include="Concrete\HR\EFEmployeeIncrementRepo.cs" />
+    <Compile Include="Concrete\HR\EFEmployeePayrollRepo.cs" />
+    <Compile Include="Concrete\HR\EFEmployeeAllDedRepo.cs" />
+    <Compile Include="Concrete\HR\EFEmployeeTourRepo.cs" />
+    <Compile Include="Concrete\HR\EFEmployeeShiftRepo.cs" />
+    <Compile Include="Concrete\HR\EFEmployeeResignRepo.cs" />
+    <Compile Include="Concrete\HR\EFEmployeeLeaveRepo.cs" />
+    <Compile Include="Concrete\HR\EFEmployeeRepo.cs" />
+    <Compile Include="Concrete\HR\EFEmployeeAttendanceRepo.cs" />
+    <Compile Include="Concrete\HR\EFEmployeeShowcauseRepo.cs" />
+    <Compile Include="Concrete\HR\EFEmployeeTransferRepo.cs" />
+    <Compile Include="Concrete\Invoices\EFInvoiceDetailsRepo.cs" />
+    <Compile Include="Concrete\Invoices\EFInvoiceRepo.cs" />
+    <Compile Include="Concrete\MF\EFGroupsRepo.cs" />
+    <Compile Include="Concrete\MF\EFLoanCycleRepo.cs" />
+    <Compile Include="Concrete\MF\EFMemberRepo.cs" />
+    <Compile Include="Concrete\MF\EFProductRepo.cs" />
+    <Compile Include="Concrete\MF\EFLoanScheduleRepo.cs" />
+    <Compile Include="Concrete\MF\EFLoanCollectionRepo.cs" />
+    <Compile Include="Concrete\MF\EFLoanRepo.cs" />
+    <Compile Include="Concrete\MF\EFSchemeRepo.cs" />
+    <Compile Include="Concrete\MF\EFProjectRepo.cs" />
+    <Compile Include="Concrete\Setup\EFAttenStatusRepo.cs" />
+    <Compile Include="Concrete\Setup\EFAllDedRepo.cs" />
+    <Compile Include="Concrete\Setup\EFDepartmentRepo.cs" />
+    <Compile Include="Concrete\Setup\EFDesignationRepo.cs" />
+    <Compile Include="Concrete\Setup\EFEducationRepo.cs" />
+    <Compile Include="Concrete\Setup\EFErrorLogRepo.cs" />
+    <Compile Include="Concrete\Setup\EFShopPageRepo.cs" />
+    <Compile Include="Concrete\Setup\EFSectionRepo.cs" />
+    <Compile Include="Concrete\Setup\EFHolidayRepo.cs" />
+    <Compile Include="Concrete\Setup\EFLeaveRepo.cs" />
+    <Compile Include="Concrete\Setup\EFInactiveReasonRepo.cs" />
+    <Compile Include="Concrete\Setup\EFShiftRepo.cs" />
+    <Compile Include="Concrete\Setup\EFCompanyRepo.cs" />
+    <Compile Include="Concrete\Setup\EFEmploymentTypeRepo.cs" />
+    <Compile Include="Concrete\Stock\EFItemRepo.cs" />
+    <Compile Include="Concrete\Stock\EFCategorySubRepo.cs" />
+    <Compile Include="Concrete\Stock\EFCategoryRepo.cs" />
+    <Compile Include="Concrete\Stock\EFBrandRepo.cs" />
+    <Compile Include="Entities\Accounts\AccountGL.cs" />
+    <Compile Include="Entities\Accounts\AccountSubHead.cs" />
+    <Compile Include="Entities\Accounts\AccountMainHead.cs" />
+    <Compile Include="Entities\Accounts\AccountType.cs" />
+    <Compile Include="Entities\Accounts\BusinessMonthStatus.cs" />
+    <Compile Include="Entities\Accounts\CashRequisition.cs" />
+    <Compile Include="Entities\Accounts\Party.cs" />
+    <Compile Include="Entities\Accounts\Bank.cs" />
+    <Compile Include="Entities\Accounts\BusinessDay.cs" />
+    <Compile Include="Entities\Accounts\CashSummary.cs" />
+    <Compile Include="Entities\AVL\Feedback.cs" />
+    <Compile Include="Entities\AVL\PaypalIPN.cs" />
+    <Compile Include="Entities\AVL\Page.cs" />
+    <Compile Include="Entities\HR\EmployeeAllDed.cs" />
+    <Compile Include="Entities\HR\EmployeeSalaryInfo.cs" />
+    <Compile Include="Entities\HR\EmployeePayroll.cs" />
+    <Compile Include="Entities\HR\EmployeeIncrement.cs" />
+    <Compile Include="Entities\HR\EmployeeTour.cs" />
+    <Compile Include="Entities\HR\EmployeeShift.cs" />
+    <Compile Include="Entities\HR\EmployeeLeave.cs" />
+    <Compile Include="Entities\HR\EmployeeResign.cs" />
+    <Compile Include="Entities\HR\Employee.cs" />
+    <Compile Include="Entities\HR\EmployeeAttendance.cs" />
+    <Compile Include="Entities\HR\EmployeeShowcause.cs" />
+    <Compile Include="Entities\HR\EmployeeTransfer.cs" />
+    <Compile Include="Entities\Invoices\InvoiceDetails.cs" />
+    <Compile Include="Entities\Invoices\Invoice.cs" />
+    <Compile Include="Entities\MF\Groups.cs" />
+    <Compile Include="Entities\MF\Loan.cs" />
+    <Compile Include="Entities\MF\LoanCollectionVM.cs" />
+    <Compile Include="Entities\MF\Member.cs" />
+    <Compile Include="Entities\MF\Product.cs" />
+    <Compile Include="Entities\MF\LoanCycle.cs" />
+    <Compile Include="Entities\MF\LoanSchedule.cs" />
+    <Compile Include="Entities\MF\LoanCollection.cs" />
+    <Compile Include="Entities\MF\Scheme.cs" />
+    <Compile Include="Entities\MF\Project.cs" />
+    <Compile Include="Entities\Setup\Company.cs" />
+    <Compile Include="Entities\Setup\AttenStatus.cs" />
+    <Compile Include="Entities\Setup\Department.cs" />
+    <Compile Include="Entities\Setup\Designation.cs" />
+    <Compile Include="Entities\Setup\AllDed.cs" />
+    <Compile Include="Entities\Setup\Education.cs" />
+    <Compile Include="Entities\Setup\ErrorLog.cs" />
+    <Compile Include="Entities\Setup\ShopPage.cs" />
+    <Compile Include="Entities\Setup\Section.cs" />
+    <Compile Include="Entities\Setup\Holiday.cs" />
+    <Compile Include="Entities\Setup\Leave.cs" />
+    <Compile Include="Entities\Setup\ResignReason.cs" />
+    <Compile Include="Entities\Setup\Shift.cs" />
+    <Compile Include="Entities\Setup\EmploymentType.cs" />
+    <Compile Include="Entities\Stock\Brand.cs" />
+    <Compile Include="Entities\Stock\Category.cs" />
+    <Compile Include="Entities\Stock\CategorySub.cs" />
+    <Compile Include="Entities\Stock\Items.cs" />
+    <Compile Include="Entities\Stock\Shop.cs" />
+    <Compile Include="Migrations\201807011441251_dddd.cs" />
+    <Compile Include="Migrations\201807011441251_dddd.Designer.cs">
+      <DependentUpon>201807011441251_dddd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808281830089_ddhjhj.cs" />
+    <Compile Include="Migrations\201808281830089_ddhjhj.Designer.cs">
+      <DependentUpon>201808281830089_ddhjhj.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810121207344_ddd.cs" />
+    <Compile Include="Migrations\201810121207344_ddd.Designer.cs">
+      <DependentUpon>201810121207344_ddd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201807011441251_dddd.resx">
+      <DependentUpon>201807011441251_dddd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808281830089_ddhjhj.resx">
+      <DependentUpon>201808281830089_ddhjhj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810121207344_ddd.resx">
+      <DependentUpon>201810121207344_ddd.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

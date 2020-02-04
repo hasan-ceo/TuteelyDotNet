@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/MF/_LayoutMF.cshtml";
+}
+
+<div class="jumbotron jumbotron-fluid mb-md-0 px-md-0 mx-md-0 pb-md-0" style="background: url(@Url.Content("~/Images/mf/nyikabk.jpg?"+@DateTime.Now.ToFileTime())) no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover;">
+    <div class="container text-center">
+        <h1><strong>Women </strong>Development Support</h1>
+        <h4>We <strong>grow</strong>, together</h4>
+        <img src="@Url.Content("~/Images/mf/background.png?"+@DateTime.Now.ToFileTime())" class="img-fluid pt-md-2 text-center" />
+    </div>
+</div>
+
+
+<div class="row text-center p-md-5 m-md-0 bg-light">
+    <div class="col-md-12 p-md-1">
+        <div class="p-md-1">
+            <div class="form-group d-md-none">
+                &nbsp;
+            </div>
+            <h1 class="text-center"><strong class="text-info">What we do</strong></h1>
+
+            <h4 class="p-md-5">
+                Since our inception in 2015, our microcredit programme in Tanzania has reached 1 region with 1 branch office covering a population of 7000. The main components of the programme are group-based small loans. In the group-based lending system, our microcredit clients – mostly women – also receive various social counseling sessions such as hygiene, sexual reproductive health, among others during weekly meetings.
+            </h4>
+
+        </div>
+    </div>
+    <div class="col-md-12 p-md-1">
+        <div class="row">
+            <div class="offset-md-2 col-md-4">
+                <img src="@Url.Content("~/Images/mf/groupmeeting.jpg?"+@DateTime.Now.ToFileTime())" class="img-fluid pt-md-2 text-center" />
+            </div>
+            <div class="col-md-4">
+                <img src="@Url.Content("~/Images/mf/discussion.jpg?"+@DateTime.Now.ToFileTime())" class="img-fluid pt-md-2 text-center" />
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container my-md-3 px-md-5 ">
+
+    <div class="row py-md-2 px-md-5">
+        <div class="col-9 p-md-5 shadow-sm">
+            <h2 class="text-info">Contact Us</h2>
+            <p class="text-muted">
+                <h6 class="text-dark"><strong>WODESU Limited</strong></h6>
+                House - 7, Block - H, Plot - 38 
+                <br />
+                Chamwino, P.O.Box 318
+                <br />
+                Dodoma - Tanzania
+                <br />
+                info@wodesu.com
+                <br />
+                <a href="tel:+255764506387" style="text-decoration:none;color:black">+255764506387</a>
+            </p>
+        </div>
+        <div class="col-3 p-1">
+            <img src="@Url.Content("~/Images/ourguarantee2.jpg?"+@DateTime.Now.ToFileTime())" class="img-fluid" />
+        </div>
+    </div>
+
+    <div class="form-group d-md-none">
+        &nbsp;
+    </div>
+
+</div>
+
+

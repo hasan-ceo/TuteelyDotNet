@@ -1,0 +1,98 @@
+﻿@model Nyika.WebUI.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+
+<div class="row">
+    <div class="offset-md-2 col-md-8">
+        <div class="card border-0 py-md-4">
+
+            <div class="card-body text-center">
+                <h1>
+                    Let's get started
+                </h1>
+                <h6 class="text-info">
+                    Free 14 day trial. No credit card required.
+                </h6>
+
+
+
+                @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+                {
+
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+
+                    <div class="form-inline p-md-2">
+                        <div class="col-md-12">
+                            @Html.TextBoxFor(m => m.CompanyName, new { @class = "form-control-lg", @placeholder = "Your Company Name" })
+                        </div>
+                    </div>
+
+                    <div class="form-inline p-md-2">
+                        <div class="col-md-12">
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control-lg", @placeholder = "Email" })
+                        </div>
+                    </div>
+                    <div class="form-inline p-md-2">
+                        <div class="col-md-12">
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control-lg", @placeholder = "Password, ex:Abc123$" })
+                        </div>
+                    </div>
+                            <div class="form-inline p-md-2">
+                                <div class="col-md-12">
+                                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control-lg", @placeholder = "Confirm Password" })
+                                </div>
+                            </div>
+                            <div class="form-inline p-md-2">
+                                <div class="col-md-12">
+                                    <input type="submit" class="btn btn-success btn-lg btn-block" value="START FOR FREE" style="display:inline-block" />
+                                    <div class="py-md-2" style="text-align: center;color: #97a2ae;font-size: 13px;font-weight: 400;">
+                                        By clicking "START FOR FREE" you agree to the Nyika <a href="~/en/Terms">Terms</a> and <a href="~/en/Privacy">Privacy Policy</a>.
+                                    </div>
+                                </div>
+                            </div>
+                }
+
+                <hr />
+                <p class="text-left my-md-4">
+                    <strong>Help:</strong>
+                    <br />
+                    <strong>
+                        Q. What happed if I open an account with non-existing email address like abc@nothing.xyz?
+                    </strong>
+                    <br />
+                    A. You can open an account and you can use our application without any problem, except if you forget your password and you want to reset it, in that case you cannot receive any reset link at your non-existing email account. To resolve the issue you have to contact with us.
+                    <br />
+                    <strong class="text-danger">Avoid unnecessary hassle please use valid email address where you can receive reset link from us.</strong>
+                    <br />
+                    <br />
+                    <strong>
+                        Q. What should I need to know about password?
+                    </strong>
+                    <br />
+                    A. Please remember passwords must have
+                    at least 6 character long,
+                    at least one special character ('!','$'),
+                    at least one Digit ('0'-'9'),
+                    at least one lowercase character ('a'-'z'),
+                    at least one uppercase character ('A'-'Z')
+                    <br />
+                    <strong>Example: Abc123$</strong>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+

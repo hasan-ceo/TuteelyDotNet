@@ -1,0 +1,75 @@
+﻿@model Nyika.Domain.Entities.MF.Member
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/MF/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.MemberID)
+    <div class="card text-white bg-dark p-md-0 mx-0 my-0" style="min-height:540px">
+        <div class="card-header bg-dark">
+            <div class="row">
+                <div class="col-5">
+                    <h4>Are you sure you want to delete this?</h4>
+                </div>
+                <div class="col-7 text-right">
+                    <div class="btn-group btn-group-justified">
+                        @if (TempData["Delete"].ToString() != "In use, can not delete at this moment")
+                        {
+                            <input type="submit" value="Delete" class="btn btn-danger mx-md-1" />
+                        }
+                        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="card-body p-md-3 b-0 m-md-0">
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <p class="m-md-0">
+                        <strong>@Html.DisplayNameFor(model => model.Groups.GroupsName) : </strong>@Html.DisplayFor(model => model.Groups.GroupsName)
+                    </p>
+                    <p class="m-md-0">
+                        <strong>@Html.DisplayNameFor(model => model.MemberNo) : </strong>@Html.DisplayFor(model => model.MemberNo)
+                    </p>
+                    <p class="m-md-0">
+                        <strong>@Html.DisplayNameFor(model => model.MemberName) : </strong>@Html.DisplayFor(model => model.MemberName)
+                    </p>
+                    <p class="m-md-0">
+                        <strong>@Html.DisplayNameFor(model => model.MembershipDate) : </strong>@Html.DisplayFor(model => model.MembershipDate)
+                    </p>
+                    <p class="m-md-0">
+                        <strong>@Html.DisplayNameFor(model => model.MembershipExpireDate) : </strong>@Html.DisplayFor(model => model.MembershipExpireDate)
+                    </p>
+                    <p class="m-md-0">
+                        <strong>@Html.DisplayNameFor(model => model.SecurityAmountTotal) : </strong>@Html.DisplayFor(model => model.SecurityAmountTotal)
+                    </p>
+                   
+
+                    <p class="m-md-0">
+                        <strong>@Html.DisplayNameFor(model => model.ContactNumber) : </strong>@Html.DisplayFor(model => model.ContactNumber)
+                    </p>
+                    <p class="m-md-0">
+                        <strong>@Html.DisplayNameFor(model => model.Inactive) : </strong>@Html.DisplayFor(model => model.Inactive)
+                    </p>
+                </div>
+            </div>
+
+            @if (TempData["Delete"].ToString() == "In use, can not delete at this moment")
+            {
+                <div class="row my-md-3 text-center">
+                    <div class="col-md-12">
+                        <h4 class="text-white bg-danger p-md-5">@TempData["Delete"]</h4>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}

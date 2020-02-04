@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+
+    <meta charset="utf-8" />
+    <link rel="icon" href="@Url.Content("~/Images/mf/icon.png?"+@DateTime.Now.ToFileTime())" sizes="any" type="image/svg+xml">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WODESU - Women Development Support</title>
+    <meta name="keywords" content="Women Development Support" />
+    <meta name="description" content="Women Development Support" />
+
+    <meta property="fb:app_id" content="" />
+    <meta property="og:url" content="http://www.wodesu.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="WODESU - Women Development Support" />
+    <meta property="og:description" content="WODESU - Women Development Support" />
+    <meta property="og:image" content="http://wodesu.com/Images/mf/background.png" />
+
+    <meta property="og:image:width" content="817" />
+    <meta property="og:image:height" content="466" />
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+</head>
+<body style="padding-top: 78px" class="bg-white">
+   
+
+
+    <nav class="navbar navbar-expand-md navbar-light bg-white fixed-top">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="@Url.Content("~/")">
+            <img src="@Url.Content("~/Images/mf/logo-mf.jpg?"+@DateTime.Now.ToFileTime())" alt="logo" />
+
+        </a>
+
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto "></ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li> <a class="btn btn-link mx-md-1 my-md-0 text-dark" href="tel:+255764506387" style="text-decoration:none"><strong>Let's Chat</strong> +255764506387</a></li>
+                            </ul>
+
+        </div>
+    </nav>
+
+
+
+    <div class="container-fluid bg-white p-md-0 m-md-0" style="min-height:540px">
+        @RenderBody()
+    </div>
+
+
+    <div class="container-fluid">
+        <footer class="py-md-3 my-md-3 bg-white text-dark">
+            <div class="row">
+                <div class="col-md-12">
+                    <h6 class="text-md-center p-md-1 m-md-0">Copyright © 2017-2018 <strong>WODESU Limited</strong></h6>
+                    @*<p class="text-md-right p-md-1 m-md-0">Dar-es-Salaam, Tanzania</p>*@
+                </div>
+            </div>
+
+        </footer>
+        <div class="row">
+            <div class="col-md-12">
+                <table width="135" border="0" cellpadding="2" cellspacing="0" title="Click to Verify - This site chose GeoTrust SSL for secure e-commerce and confidential communications.">
+                    <tr>
+                        <td width="135" align="center" valign="top">
+                            <script type="text/javascript" src="https://seal.geotrust.com/getgeotrustsslseal?host_name=www.nyika.co&amp;size=M&amp;lang=en"></script><br />
+                            <a href="http://www.geotrust.com/ssl/" target="_blank" style="color:#000000; text-decoration:none; font:bold 7px verdana,sans-serif; letter-spacing:.5px; text-align:center; margin:0px; padding:0px;"></a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+
+
+
+
+
+
+</body>
+</html>
