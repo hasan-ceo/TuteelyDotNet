@@ -17,3 +17,23 @@ In Swahili Nyika means wilderness. Nyika is an online business intelligence 'Sof
 * Customization and scalability
 * Self Service Portals
 * Affordable monthly/yearly payments
+
+# HR & Payroll
+* Up to date centralized Employee Records
+* Recruiting & Applicant Tracking System
+* Attendance Management
+* Increment Register
+* Report Generation
+* Loan and Advance Register
+* Allowance and Deduction Register
+* Benefits management
+* Create payslips and Timecard for employees
+* Auto calculates tax and statutory deductions
+
+# Accounting
+* Chart of accounts
+* Client records management
+* Invoice creation
+* Double entry, accrual accounting
+* Ledger & Trail Balance
+* Multi-user
