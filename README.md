@@ -1,5 +1,4 @@
 # Nyika
-
 The All-in-One HR + Payroll + Accounting Solution
 Save time, Save money. Manage your human resource, prepare payroll and have control on your accounts.
 
