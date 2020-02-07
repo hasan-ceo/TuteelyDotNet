@@ -37,13 +37,18 @@ In Swahili Nyika means wilderness. Nyika is an online business intelligence 'Sof
 * Ledger & Trail Balance
 * Multi-user
 
-## Why Choose Nyika?
-You love simplicity. So are we. Let’s grow business together.
+### Microfinance
+* Group management
+* Member management
+* Loan disbusement
+* Loan Collection
+* Tread and different reports
 
-### We are with you every step of the way.
-Whatever company size, our professional staff is here to assist you every step starting from free company registration, setup basic information and record keeping. Before pay for any of our subscription, we encourage you to check the solution and communicate with us. We are here 24/7/365 to assist you with any aspect of your user experience. Allow us the opportunity to exceed your expectations. 
+## Technology Use?
+Bankend: C#, Asp.net 4.6
+Frontend: Razor pages, Javascript, HTML, Bootstrap
+Database: Microsoft SQL Server
+Reporting: Crystal report
 
-### Get started quickly & easily.
-For example, when you register a company using valid email address you become a super admin and we prepare a demo company for you instantly, so that you can just add new data or modify demo data and generate reports to check the solution match with your desire outcomes or identify the scope of customization you need. We charge for customization separately after review the scope of work. 
-
-
+# Disclaimer
+Currently I am not maintaing this repository. Working on new version of this product. So feel free to  
