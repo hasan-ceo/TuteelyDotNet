@@ -51,4 +51,4 @@ Database: Microsoft SQL Server
 Reporting: Crystal report
 
 # Disclaimer
-Currently I am not maintaing this repository. Working on new version of this product. So feel free to  
+Currently I am not maintaing this repository. Working on new version of this product. So feel free to play with it. 
