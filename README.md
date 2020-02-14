@@ -59,7 +59,9 @@ If you like or are using this project to learn or start your solution, please gi
 
 ## QuickStart Guide
 Getting started with Nyika is pretty easy. 
+
 You can [clone](https://github.com/iamhasanhabib/Nyika) from github.
+
 Once the contents are available, just open the created solution, select "Nyika.WebUI" as startup project and press F5!
 
 That's it!
