@@ -3,7 +3,10 @@ The All-in-One HR + Payroll + Accounting Solution
 Save time, Save money. Manage your human resource, prepare payroll and have control on your accounts.
 
 ## What is Nyika?
-In Swahili Nyika means wilderness. Nyika is an online business intelligence 'Software as a Service' application comes as a saviour in the wild business world which helps company of any size to manage HR data, prepare Payroll, track Income and Expenditure and transparent Audit. Nyika is simple to use, affordable and reliable. 
+In Swahili Nyika means wilderness. Nyika is an online business intelligence 'Software as a Service' application which helps company of any size to manage HR data, prepare Payroll, track Income and Expenditure and transparent Audit. Nyika is simple to use, affordable and reliable. 
+
+## Give a Star! :star:
+If you like or are using this project to learn or start your solution, please give it a [star](https://github.com/IAmHasanHabib/Nyika). Thanks!
 
 ### Overview
 * Easy to use system
@@ -44,11 +47,22 @@ In Swahili Nyika means wilderness. Nyika is an online business intelligence 'Sof
 * Loan Collection
 * Tread and different reports
 
-## Technology Use?
-Bankend: C#, Asp.net 4.6
+## Technology Areas?
+Bankend: C#, Asp.net 4.6, Entity Framework Core
 Frontend: Razor pages, Javascript, HTML, Bootstrap
 Database: Microsoft SQL Server
 Reporting: Crystal report
+IDE: Visual Studio 
+
+## System Requirements (Development)
+* Visual Studio 2017/2019 ([Free](https://visualstudio.microsoft.com/vs/community/) Community Edition or higher)
+
+## QuickStart Guide
+Getting started with Nyika is pretty easy. 
+You can [clone](https://github.com/iamhasanhabib/Nyika) from github.
+Once the contents are available, just open the created solution, select "Nyika.WebUI" as startup project and press F5!
+
+That's it!
 
 # Disclaimer
 Currently I am not maintaing this repository. Working on new version of this product. So feel free to play with it. 
