@@ -48,11 +48,11 @@ If you like or are using this project to learn or start your solution, please gi
 * Tread and different reports
 
 ## Technology Areas?
-Bankend: C#, Asp.net 4.6, Entity Framework Core
-Frontend: Razor pages, Javascript, HTML, Bootstrap
-Database: Microsoft SQL Server
-Reporting: Crystal report
-IDE: Visual Studio 
+* Bankend: C#, Asp.net 4.6, Entity Framework Core
+* Frontend: Razor pages, Javascript, HTML, Bootstrap
+* Database: Microsoft SQL Server
+* Reporting: Crystal report
+* IDE: Visual Studio 
 
 ## System Requirements (Development)
 * Visual Studio 2017/2019 ([Free](https://visualstudio.microsoft.com/vs/community/) Community Edition or higher)
