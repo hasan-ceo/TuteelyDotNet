@@ -48,7 +48,7 @@ If you like or are using this project to learn or start your solution, please gi
 * Tread and different reports
 
 ## Technology Areas?
-* Bankend: C#, Asp.net 4.6, Entity Framework Core
+* Bankend: C#, Asp.net 4.6, Entity Framework
 * Frontend: Razor pages, Javascript, HTML, Bootstrap
 * Database: Microsoft SQL Server
 * Reporting: Crystal report
