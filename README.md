@@ -60,7 +60,7 @@ If you like or are using this project to learn or start your solution, please gi
 ## QuickStart Guide
 Getting started with TuteelyDotNet is pretty easy. 
 
-You can [clone](https://github.com/iamhasanhabib/TuteelyDotNet) from github.
+You can [clone](https://github.com/devopshasan/TuteelyDotNet) from github.
 
 Once the contents are available, just open the created solution, select "TuteelyDotNet.WebUI" as startup project and press F5!
 
