@@ -72,5 +72,5 @@ Currently I am not maintaing this repository. Working on new version of this pro
 
 | :bar_chart:               |  List of Tutorials   |   | :moneybag:           | Support Us                           |
 |--------------------------:|:---------------------|---|---------------------:|:-------------------------------------|
-| MS SQL Server             |https://www.youtube.com/playlist?list=PLHUiHsvHlPzL76O9SeUKpnx45dkftrP7y |   |                |                 |
-| Asp.Net Core              |https://www.youtube.com/playlist?list=PLHUiHsvHlPzLcx856PZpyuFXIhwaqTrvH |   |    |                 |
+| MS SQL Server             |https://www.youtube.com/playlist?list=PLHUiHsvHlPzL76O9SeUKpnx45dkftrP7y |   |                |  https://www.paypal.me/iamhasanhabib                |
+| Asp.Net Core              |https://www.youtube.com/playlist?list=PLHUiHsvHlPzLcx856PZpyuFXIhwaqTrvH |   |    |  https://www.paypal.me/iamhasanhabib                 | 
