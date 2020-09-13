@@ -72,5 +72,10 @@ Currently I am not maintaing this repository. Working on new version of this pro
 
 | :bar_chart:               |  List of Tutorials   |   | :moneybag:           | Support Us                           |
 |--------------------------:|:---------------------|---|---------------------:|:-------------------------------------|
-| MS SQL Server             |https://www.youtube.com/playlist?list=PLHUiHsvHlPzL76O9SeUKpnx45dkftrP7y |   |                |  https://www.paypal.me/iamhasanhabib                |
-| Asp.Net Core              |https://www.youtube.com/playlist?list=PLHUiHsvHlPzLcx856PZpyuFXIhwaqTrvH |   |    |  https://www.paypal.me/iamhasanhabib                 | 
+| MS SQL Server             |https://www.youtube.com/playlist?list=PLHUiHsvHlPzL76O9SeUKpnx45dkftrP7y |   | Paypal |  https://www.paypal.me/iamhasanhabib                |
+| Asp.Net Core              |https://www.youtube.com/playlist?list=PLHUiHsvHlPzLcx856PZpyuFXIhwaqTrvH |   | Paypal |  https://www.paypal.me/iamhasanhabib                 |
+|                           | |   | :point_right:        | Follow Us                            |
+|                           | |   |Website               |http://www.devopshasan.com          |
+|                           | |   |YouTube               |https://www.youtube.com/devopshasan  |
+|                           | |   |Facebook              |https://www.facebook.com/devopshasan |
+|                           | |   |Twitter               |https://twitter.com/devopshasan      | 
