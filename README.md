@@ -68,3 +68,9 @@ That's it!
 
 # Disclaimer
 Currently I am not maintaing this repository. Working on new version of this product. So feel free to play with it. 
+
+
+| :bar_chart:               |  List of Tutorials   |   | :moneybag:           | Support Us                           |
+|--------------------------:|:---------------------|---|---------------------:|:-------------------------------------|
+| MS SQL Server             |https://www.youtube.com/playlist?list=PLHUiHsvHlPzL76O9SeUKpnx45dkftrP7y |   |                |                 |
+| Asp.Net Core              |https://www.youtube.com/playlist?list=PLHUiHsvHlPzLcx856PZpyuFXIhwaqTrvH |   |    |                 |
