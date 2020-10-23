@@ -6,7 +6,7 @@ Save time, Save money. Manage your human resource, prepare payroll and have cont
 TuteelyDotNet is an online business intelligence 'Software as a Service' application which helps company of any size to manage HR data, prepare Payroll, track Income and Expenditure and transparent Audit. TuteelyDotNet is simple to use, affordable and reliable. 
 
 ## Give a Star! :star:
-If you like or are using this project to learn or start your solution, please give it a [star](https://github.com/IAmHasanHabib/TuteelyDotNet). Thanks!
+If you like or are using this project to learn or start your solution, please give it a [star](https://github.com/DevOpsHasan/TuteelyDotNet). Thanks!
 
 ### Overview
 * Easy to use system
@@ -74,6 +74,7 @@ Currently I am not maintaing this repository. Working on new version of this pro
 |--------------------------:|:---------------------|---|---------------------:|:-------------------------------------|
 | MS SQL Server             |https://www.youtube.com/playlist?list=PLHUiHsvHlPzL76O9SeUKpnx45dkftrP7y |   | Paypal |  https://www.paypal.me/iamhasanhabib                |
 | Asp.Net Core              |https://www.youtube.com/playlist?list=PLHUiHsvHlPzLcx856PZpyuFXIhwaqTrvH |   | Paypal |  https://www.paypal.me/iamhasanhabib                 |
+| SQL - Tips and Tricks     |https://www.youtube.com/playlist?list=PLHUiHsvHlPzK_hZoyMrkZv85Yyyi6SOb7 |   |  |                 |
 |                           | |   | :point_right:        | Follow Us                            |
 |                           | |   |Website               |http://www.devopshasan.com          |
 |                           | |   |YouTube               |https://www.youtube.com/devopshasan  |
